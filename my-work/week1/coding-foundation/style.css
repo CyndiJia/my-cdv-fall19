@@ -1,9 +1,44 @@
+/* wrap the divs */
 .flex-container{
   display: flex;
+  margin-left: 3%;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.flex-container > div {
+.divvv {
   margin: 10px;
+  background: #ebd8ee;
+  width: 50px;
+  height: 50px;
+  filter: grayscale(1) brightness(1.1);
+	-webkit-filter: grayscale(1) brightness(1.1);
+  transition: filter 0.5s;
+  transition: opacity 0.3s;
+}
+
+/* hover to change the color */
+.flex-container:hover .divvv{
+  filter: none;
+	-webkit-filter: grayscale(0);
+	transition: filter 0.5s;
+}
+
+#num{
+  margin-top: 5%;
+  margin-left: 36%;
+  font-family: 'Kalam', cursive;
+  font-size: 18px;
+  border-color: #ebd8ee;
+  border-width: 2px;
+}
+
+.button{
+  margin-left: 1%;
+  font-size: 19px;
+  background-color: #ebd8ee;
+  border-color: #ebd8ee;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Kalam', cursive;
 }
