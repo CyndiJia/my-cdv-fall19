@@ -1,7 +1,7 @@
 # Critical Questions for Big Data
 **Here is my response**:
 
-*1*. a
+*1*. From my perspective, Bowker said "Raw data is both an oxymoron and a bad idea" for two reasons. Firstly, by referring raw data as an "oxymoron", he is expressing the idea that the data is never raw, with oxymoron meaning things contradicted to each other are put together in the same phrase. The word "raw" means something that are pristine and objective from the very beginning, however, data can be very subjective from either the selection made by the data collector or the information shown online which can be incomplete and inaccurate. But if the data is completely raw, then what can we discover from the data? The only way to know something from a pure raw data might be to add personal views on the data to make the data indicate something that the data collector think about or agree with, and that's why he said raw data was a bad idea.
 
 *2*. b
 
