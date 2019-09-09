@@ -1,0 +1,25 @@
+.bar{
+  background-color: #70b39c;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+#title{
+  margin-top: 4%;
+  font-size: 25px;
+  margin-bottom: 3%;
+
+}
+
+body{
+  margin-left: 22%;
+  font-family: 'Kalam', cursive;
+  text-transform: capitalize;
+  color: #1c433c;
+  font-size: 20px;
+}
+
+#graph{
+  width:700px;
+  background-color: #91dbbe;
+}

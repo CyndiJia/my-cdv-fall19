@@ -128,11 +128,11 @@ let instruments = [
 ]
 
 function averageNum(instruments){
-  //create a new list to store the dadta
+  //create a new list to store the data
   let mainData = [];
   //get all the names of the instruments
-  let keys = Object.keys[instruments[0]];
-  //console.log(keys);
+  let keys = Object.keys(instruments[1]);
+  console.log(keys);
   for (let i = 0; i < keys.length; i++){
     //get the name of each instrument
     let insname = keys[i];
@@ -141,12 +141,39 @@ function averageNum(instruments){
     for(let j = 0; j < instruments.length;j++){
       //get to the specific response of each interviewee
       let datapoint = instruments[j];
+      //check if the instrument is in the list
       if (insname in datapoint){
         sum += datapoint[insname];
         num++;
       }
     }
-    let avg = sum/num
-    if(!isNaN)
+    //calculate the average
+    let avg = sum/num;
+    //prevent "timestamp" from entering into the database
+    if(!isNaN(avg)){
+      let result = {"name": insname, "average": avg, "counts":num};
+      //update the maindatabase
+      mainData.push(result);
+    }
   }
+  return mainData;
 }
+
+  let newData = averageNum(instruments);
+  //console.log(newData);
+  for(let k = 0; k < newData.length; k++){
+    let insdata = newData[k];
+    let insins = insdata.name;
+    //console.log(insins);
+    let average = insdata.average;
+    console.log(average);
+
+    //create divs
+    let bar = document.createElement("div");
+    let barname = document.createElement("div");
+    barname.innerHTML = insins + ": "+ average.toFixed(2);
+    bar.style.width = (average*70)+"px";
+    bar.className = "bar";
+    bar.appendChild(barname);
+    document.getElementById("graph").appendChild(bar);
+  }
