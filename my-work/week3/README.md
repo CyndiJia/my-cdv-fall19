@@ -1,6 +1,6 @@
 # The Minority Report
 
-3 Contemporary Applications in which data is used to predict the future and we then act upon
+__3 Contemporary Applications in which data is used to predict the future and we then act upon__
 ***
 
 ### Situation 1 : Weather Forecast Application
