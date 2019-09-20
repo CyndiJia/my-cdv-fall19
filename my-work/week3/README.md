@@ -1,4 +1,7 @@
-# Contemporary Applications in which data is used to predict the future and we then act upon
+# The Minority Report
+
+temporary Applications in which data is used to predict the future and we then act upon
+***
 
 ### Situation 1 : Weather Forecast Application
 When people are using the weather forecast application, they are able to know the weather of upcoming days to determine what to wear and whether to bring an umbrella or not. Weather forecast are made by collecting as much data as possible of the current state of the atmosphere, including the temperature, chance of rain, wind, humidity, etc. Then these data are used by experts in this area to predict how the weather changes in the future.
