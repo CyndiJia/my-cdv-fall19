@@ -1,6 +1,6 @@
 [
     {
-        "date": "Tuesday",
+        "date": "2",
         "haextremelyHappy": 256,
         "wuextremelySad": 21,
         "emojisForPositiveFeelings": 30,
@@ -8,7 +8,7 @@
         "questionMark": 17
     },
     {
-        "date": "Wednesday",
+        "date": "3",
         "haextremelyHappy": 464,
         "wuextremelySad": 25,
         "emojisForPositiveFeelings": 24,
@@ -16,7 +16,7 @@
         "questionMark": 73
     },
     {
-        "date": "Thursday",
+        "date": "4",
         "haextremelyHappy": 391,
         "wuextremelySad": 43,
         "emojisForPositiveFeelings": 45,
@@ -24,7 +24,7 @@
         "questionMark": 30
     },
     {
-        "date": "Friday",
+        "date": "5",
         "haextremelyHappy": 294,
         "wuextremelySad": 169,
         "emojisForPositiveFeelings": 54,
@@ -32,7 +32,7 @@
         "questionMark": 11
     },
     {
-        "date": "Saturday",
+        "date": "6",
         "haextremelyHappy": 155,
         "wuextremelySad": 75,
         "emojisForPositiveFeelings": 10,
@@ -40,7 +40,7 @@
         "questionMark": 5
     },
     {
-        "date": "Sunday",
+        "date": "7",
         "haextremelyHappy": 233,
         "wuextremelySad": 66,
         "emojisForPositiveFeelings": 37,
