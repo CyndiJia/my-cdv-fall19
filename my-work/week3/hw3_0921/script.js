@@ -222,10 +222,29 @@ function gotData(incomingData){
 
     group6.attr("transform",posTrans);
 
-    d3.select(".datagroup1")
+    // Why this one doesn't work? How is it diffrent from the one below?
+    // d3.select(".datagroup4").selectAll("ellipse")
+    //                             .attr("rx",rx)
+    //                             .transition()
+    //                             .duration(1000)
+    //                             .attr("rx",text)
+    // ;
+
+    d3.selectAll("ellipse")
+          .attr("rx",rx)
           .transition()
           .duration(1000)
-          .attr("fill","white")
+          .attr("rx",text)
+          .transition()
+          .duration(1000)
+          .attr("rx",rx)
+          .transition()
+          .duration(1000)
+          .attr("rx",text)
+          .transition()
+          .duration(1000)
+          .attr("rx",rx)
+
     ;
 
   }
