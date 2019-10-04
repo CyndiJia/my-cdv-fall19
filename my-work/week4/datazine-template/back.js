@@ -70,7 +70,7 @@ labels.selectAll("circles").data(types).enter()
                                           .append("circle")
                                               .attr("cx",posx)
                                               .attr("cy",posy)
-                                              .attr("r",24)
+                                              .attr("r",18)
                                               .attr("fill",getColor)
                                               .attr("opacity",0.5)
 ;
