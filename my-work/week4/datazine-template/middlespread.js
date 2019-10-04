@@ -43,12 +43,31 @@ heatmap.append("g")
 
 
 //colorScale
-let colorScale = d3.scaleLinear()
-                    .domain([0,500])
+let colorScale1 = d3.scaleLinear()
+                    .domain([0,400])
+                    .range(["white","red"])
+;
+
+let colorScale2 = d3.scaleLinear()
+                    .domain([0,400])
+                    .range(["white","orange"])
+;
+
+let colorScale3 = d3.scaleLinear()
+                    .domain([0,400])
+                    .range(["white","blue"])
+;
+
+let colorScale4 = d3.scaleLinear()
+                    .domain([0,400])
                     .range(["white","green"])
 ;
 
-console.log(colorScale(200));
+let colorScale5 = d3.scaleLinear()
+                    .domain([0,400])
+                    .range(["white","purple"])
+;
+
 
 function posx(d,i){
   return xx(d.date);
@@ -60,7 +79,22 @@ function posy(d,i){
 }
 
 function getColor(d,i){
-  return colorScale(d.number);
+  console.log(d.type);
+  if(d.type == "Ha: ExtremelyHappy"){
+    return colorScale1(d.number);
+  }
+  if(d.type == "Wu: ExtremelySad"){
+    return colorScale2(d.number);
+  }
+  if(d.type == "PositiveEmojis"){
+    return colorScale3(d.number);
+  }
+  if(d.type == "NegativeEmojis"){
+    return colorScale4(d.number);
+  }
+  else{
+    return colorScale5(d.number);
+  }
 }
 
 
