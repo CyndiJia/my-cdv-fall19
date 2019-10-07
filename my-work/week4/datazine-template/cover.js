@@ -3,9 +3,9 @@ let h = 800;
 
 let cover = d3.select("#container")
                   .append("svg")
-                    .attr("width",w-60)
+                    .attr("width",w-40)
                     .attr("height",h-40)
-                    .attr("transform","translate(30,20)")
+                    .attr("transform","translate(20,20)")
 ;
 
 //why this one doesn't work?
