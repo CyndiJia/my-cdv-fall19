@@ -103,22 +103,25 @@ function gotData(incomingData){
 
     let total = ha+wu+pos+neg+que;
 
-    let percentage = {"ha":ha*100/total,"wu":wu*100/total,"pos":pos*100/total,"neg":neg*100/total,"que":que*100/total};
-    console.log(percentage);
 
-    let data = {"ha":ha, "wu":wu, "pos":pos, "neg":neg, "que":que};
+    let data = {"ha": {inten:ha, perc: ha*100/total}, "wu":{inten:wu, perc:wu*100/total}, "pos":{inten:pos, perc:pos*100/total}, "neg":{inten:neg, perc:neg*100/total}, "que":{inten:que, perc:que*100/total}};
     //console.log(data);
 
 
     // Compute the position of each group on the pie:
     let pie = d3.pie()
-                    .sort(null) // Do not sort group by size??
-                    .value(function(d) {return d.value; })
+                    // .sort(null) // Do not sort group by size??
+                    .value(function(d) { return d.value.inten; })
+                    .padAngle(0.01)
     ;
+
 
     //d3.entries => return an array of data
     let data_ready = pie(d3.entries(data));
 
+    //console.log(data);
+    //console.log(d3.entries(data));
+    //console.log(data_ready);
 
 
     // The arc generator
@@ -129,17 +132,49 @@ function gotData(incomingData){
 
     //console.log(data_ready);
 
-
-    graph.selectAll("allSlices").data(data_ready).enter()
-                                                    .append("path")
-                                                    .attr("d",arc)
-                                                    .attr("fill",function(d){
-                                                      return (color(d.data.key));
-                                                    })
-                                                    .attr("stroke","white")
-                                                    .attr("stroke-width","2px")
-                                                    .attr("opacity",0.5)
+    let arcG = graph.selectAll(".arcG").data(data_ready).enter()
+                                                            .append("g")
+                                                              .attr("class","arcG")
     ;
+
+    arcG.append("path")
+          .attr("d",arc)
+          .attr("fill",function(d){
+            return color(d.data.key);
+          })
+          .attr("stroke","white")
+          .attr("stroke-width","2px")
+          .attr("opacity",0.5)
+    ;
+
+    let format = d3.format(".1f")
+    arcG.append("text")
+            .text(d=>{
+              console.log(d.data.key);
+              return format(d.data.value.perc)+"%";
+            })
+            .attr("fill","white")
+            .attr("x",function(d){
+              return arc.centroid(d)[0];
+            })
+            .attr("y",function(d){
+              return arc.centroid(d)[1];
+            })
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+    ;
+    // graph.selectAll(".allSlices").data(data_ready).enter()
+    //                                                 .append("path")
+    //                                                 .attr("d",arc)
+    //                                                 .attr("fill",function(d){
+    //                                                   console.log("hello")
+    //                                                   console.log(arc.centroid(d))
+    //                                                   return (color(d.data.key));
+    //                                                 })
+    //                                                 .attr("stroke","white")
+    //                                                 .attr("stroke-width","2px")
+    //                                                 .attr("opacity",0.5)
+    // ;
 
 }
 

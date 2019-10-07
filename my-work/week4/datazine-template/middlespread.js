@@ -32,13 +32,17 @@ let yy = d3.scaleBand()
                 .padding(0.01)
 ;
 
-heatmap.append("g")
-            .attr("transform", "translate(0,720)")
-            .call(d3.axisBottom(xx))
-;
+let xAxis = d3.axisBottom(xx).tickPadding(30);
 
 heatmap.append("g")
-          .call(d3.axisLeft(yy))
+            .attr("transform", "translate(0,720)")
+            .attr("class","xaxis")
+            .call(xAxis);
+;
+
+let yAxis = d3.axisLeft(yy).tickPadding(30);
+heatmap.append("g")
+          .call(yAxis)
 ;
 
 
