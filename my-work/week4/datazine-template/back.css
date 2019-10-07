@@ -14,11 +14,16 @@
   display: inline-block;
   width: 600px;
   height: 800px;
+  margin-top: 2.5%;
   float: right;
-  background-color: lightyellow;
 }
 
 h1{
   margin-left: 42%;
 
+}
+
+#intrograph{
+  margin-left: 5%;
+  width: 500px;
 }

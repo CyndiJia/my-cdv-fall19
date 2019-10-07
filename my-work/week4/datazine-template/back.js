@@ -127,7 +127,7 @@ function gotData(incomingData){
                     .outerRadius(radius * 0.8)
     ;
 
-    console.log(data_ready);
+    //console.log(data_ready);
 
 
     graph.selectAll("allSlices").data(data_ready).enter()
