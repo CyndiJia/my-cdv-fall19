@@ -21,7 +21,7 @@ For the back page, I created a **donut chart** based on the percentage of each t
 
 ![back](https://github.com/CyndiJia/my-cdv-fall19/blob/master/my-work/week4/datazine-Cyndi/back.png)
 
-#### Reflection
+### Reflection
 The process of creating this chart is relatively harder than past assignments because the donut chart and the position of percentage are totally new to me. However, I was also thrilled to explore more about d3, for instance, path, pie chart, centroid, etc. The heatmap is also a bit tricky when it comes to the scaleband function which also took me a while to understand, but it is also super convenient. Thanks to d3 for generating math formulas automatically so that I don't have to do the complicated calculations by myself.
 
 Enjoy!
