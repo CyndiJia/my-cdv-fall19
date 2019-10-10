@@ -1,0 +1,11 @@
+.xaxis .tick text{
+  font-size: 15px;
+  color: grey;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.yaxis{
+  font-size: 11px;
+  color: grey;
+  font-family: 'Titillium Web', sans-serif;
+}

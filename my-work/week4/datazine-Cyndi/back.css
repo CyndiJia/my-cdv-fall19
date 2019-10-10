@@ -1,0 +1,30 @@
+#graph{
+  display: inline-block;
+  /* float: left; */
+  height: 500px;
+}
+
+#labels{
+  display: inline-block;
+  width: 600px;
+  height: 300px;
+}
+
+#intro{
+  display: inline-block;
+  width: 600px;
+  height: 800px;
+  margin-top: 1.7%;
+  float: right;
+}
+
+h1{
+  margin-left: 42%;
+
+}
+
+#intrograph{
+  margin-left: 5%;
+  font-size: 15px;
+  width: 500px;
+}

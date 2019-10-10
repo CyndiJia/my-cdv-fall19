@@ -48,7 +48,7 @@ function gotData1(wsonline){   // this function expects to be passed data
     //  console.log(c1);
       chart1.push(c1);
     }
-    //console.log(chart1);
+    console.log(chart1);
 
     let curve = d3.area()
                       .x(function(d) { return d.x })      // Position of both line breaks on the X axis
