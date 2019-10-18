@@ -1,0 +1,7 @@
+## Two Articles about Data Visualization
+#### [Article 1: Film Dialogue from 2,000 screenplays, Broken Down by Gender and Age](https://pudding.cool/2017/03/film-dialogue/)
+
+This article talks about the racism and sexism in the movie market, namely, "the prevailing theme: white men dominate movie roles". By compiling the number of words spoken by male and female characters from about 2,000 films, the data shows that in the majority of Disney's films, men characters have 60%+ dialogue. This report also indicates that in Hollywood films, there are more roles for male actors who are over 40 years old. For actresses it is the exact opposite: "Dialogue available to women who are over 40 years old decrease substantially".
+
+#### [Article 2: Can money buy happiness? Two centuries’ worth of books suggest it can](https://www.economist.com/graphic-detail/2019/10/16/can-money-buy-happiness-two-centuries-worth-of-books-suggest-it-can)
+This articles explores the relationship between national GDP and citizen's level of happiness. The data is divided into several historical periods, so following the track of history they get a sense of the shifts in global & national economy. The results shows that increasing income does contribute to happiness, but health and life expectancy are more important. As the article suggests, "The upshot appears to be that, although increasing national income is important to happiness, it is not as important as ensuring the population is healthy and avoiding conflict."
