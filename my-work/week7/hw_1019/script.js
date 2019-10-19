@@ -26,7 +26,7 @@ let viz = d3.select("#container")
   .append('svg')
     .attr("width", w)
     .attr("height", h)
-    .style("background-color", "darkcyan")
+    .style("background-color", "#ecf4dc")
 ;
 
 
@@ -71,7 +71,7 @@ function gotData(incomingData){
 
   let vizgroup = viz.append("g").attr("class", "vizgroup");
 
-  //drawViz("C");
+  drawViz("A");
 
   function drawViz(name){
     let data = getName(incomingData,name);
@@ -96,7 +96,7 @@ function gotData(incomingData){
 
     groupdata.append("circle")
                 .attr("r", 5)
-                .attr("fill", "white")
+                .attr("fill", "#cce2a2")
     ;
 
 
@@ -107,6 +107,8 @@ function gotData(incomingData){
     datagroups.attr("transform", function(d, i){
                                   return "translate("+ xScale(d.x) + ", " + yScale(d.y) + ")"
                                 });
+
+    datagroups.exit().remove();//I don't understand it but it worked lol
 
 }
 document.getElementById("btn1").addEventListener("click", function() {drawViz('A');});
