@@ -99,6 +99,12 @@ function gotData(incomingData){
                 .attr("fill", "#cce2a2")
     ;
 
+    d3.selectAll("circle").transition().attr("fill","#7A8761").duration(1500)
+                          .transition().attr("r","10").duration(1000)
+                          .transition().attr("r","3").duration(1000)
+                          .transition().attr("r","5").duration(1000);
+
+
 
     groupdata.transition().attr("transform", function(d, i){
                                   return "translate("+ xScale(d.x) + ", " + yScale(d.y) + ")"
@@ -108,9 +114,10 @@ function gotData(incomingData){
                                   return "translate("+ xScale(d.x) + ", " + yScale(d.y) + ")"
                                 });
 
-    datagroups.exit().remove();//I don't understand it but it worked lol
+    datagroups.exit().remove();//It worked but I don't understand it TAT
 
 }
+
 document.getElementById("btn1").addEventListener("click", function() {drawViz('A');});
 document.getElementById("btn2").addEventListener("click", function() {drawViz('B');});
 document.getElementById("btn3").addEventListener("click", function() {drawViz('C');});
