@@ -81,40 +81,67 @@ function gotData(incomingData){
     // after binding the new data, d3 thinks: we have 3 datapoints
     // on the page, and have 3 datapoints in the incoming data.
     // Therefore no new elements need to enter
-    let datagroups = vizgroup.selectAll(".datagroup").data(data,function(d){
-      return d.name;
-    });
+    let fulltable = vizgroup.selectAll(".datagroup").data(data);
+    let enteringElements = fulltable.enter();
+    let exitingElements = fulltable.exit();
+    console.log("fulltable", fulltable);
+    console.log("enteringElements", enteringElements);
+    console.log("exitingElements", exitingElements);
 
-    // if we extract only the entering elements the
-    // "groupdata" selection will be empty the second time
-    // this function is called, because elements are already on
-    // the page and only need to be updated
-    let groupdata = datagroups.enter()
+    // // if we extract only the entering elements the
+    // // "groupdata" selection will be empty the second time
+    // // this function is called, because elements are already on
+    // // the page and only need to be updated
+    let enteringDataGroups = enteringElements
                               .append("g")
                               .attr("class", "datagroup")
         ;
 
-    groupdata.append("circle")
+    enteringDataGroups.append("circle")
                 .attr("r", 5)
                 .attr("fill", "#cce2a2")
     ;
+    enteringDataGroups
+      .attr("transform", function(d, i){
+        return "translate("+ xScale(d.x) + ", " + 0 + ")"
+      })
+      .transition()
+      .duration(3000)
+      .attr("transform", function(d, i){
+        return "translate("+ xScale(d.x) + ", " + yScale(d.y) + ")"
+      });
 
-    d3.selectAll("circle").transition().attr("fill","#7A8761").duration(1500)
-                          .transition().attr("r","10").duration(1000)
-                          .transition().attr("r","3").duration(1000)
-                          .transition().attr("r","5").duration(1000);
+    // exitingElements.selectAll("circle").transition().duration(2000).attr("r", 0);
+    exitingElements
+      .transition()
+      .duration(3000)
+      .attr("transform", function(d, i){
+        return "translate("+ xScale(d.x) + ", " + h + ")"
+      })
+      .remove()
+    ;
 
 
-
-    groupdata.transition().attr("transform", function(d, i){
+    fulltable.transition().attr("transform", function(d, i){
                                   return "translate("+ xScale(d.x) + ", " + yScale(d.y) + ")"
                                 });
-    // here we deal with the elements that need to be UPDATED
-    datagroups.attr("transform", function(d, i){
-                                  return "translate("+ xScale(d.x) + ", " + yScale(d.y) + ")"
-                                });
-
-    datagroups.exit().remove();//It worked but I don't understand it TAT
+    //
+    // d3.selectAll("circle").transition().attr("fill","#7A8761").duration(1500)
+    //                       .transition().attr("r","10").duration(1000)
+    //                       .transition().attr("r","3").duration(1000)
+    //                       .transition().attr("r","5").duration(1000);
+    //
+    //
+    //
+    // groupdata.transition().attr("transform", function(d, i){
+    //                               return "translate("+ xScale(d.x) + ", " + yScale(d.y) + ")"
+    //                             });
+    // // here we deal with the elements that need to be UPDATED
+    // datagroups.attr("transform", function(d, i){
+    //                               return "translate("+ xScale(d.x) + ", " + yScale(d.y) + ")"
+    //                             });
+    //
+    // datagroups.exit().remove();//It worked but I don't understand it TAT
 
 }
 
