@@ -410,3 +410,10 @@ function shuffleData(){
   updateAdd();
 }
 document.getElementById("buttonE").addEventListener("click", shuffleData);
+
+function heighttt(){
+  d3.selectAll("rect").transition().duration(2000).attr("height",0);
+  console.log("1");
+}
+
+document.getElementById("buttonF").addEventListener("click", heighttt);

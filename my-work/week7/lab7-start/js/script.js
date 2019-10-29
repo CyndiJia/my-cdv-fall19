@@ -410,3 +410,11 @@ function shuffleData(){
   updateAdd();
 }
 document.getElementById("buttonE").addEventListener("click", shuffleData);
+
+function colorrr(){
+  dataGroups.selectAll("rect").attr("fill","red");
+  updateAdd();
+  console.log("1");
+}
+
+document.getElementById("bf").addEventListener("click", colorrr);
