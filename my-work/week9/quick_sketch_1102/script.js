@@ -96,50 +96,78 @@ function gotData(incomingData){
         'category' : "price",
         'values': [
           {
-          "listingValue":listing.price,
-          "areaAvg": meanPricebronx,
-          "nycAvg": meanPrice
-          }
+          "value":listing.price,
+          "name":"listing",
+        },
+          {
+          "value": meanPricebronx,
+          "name": "avgzone"
+        },
+          {
+          "value": meanPrice,
+          "name":"avgNYC"
+        }
         ]
       },
       {
         'category': "minimum_nights",
         'values': [
           {
-          "listingValue": listing.minimum_nights,
-          "areaAvg": meanNightsbronx,
-          "nycAvg": meanNig
-          }
+          "value":listing.minimum_nights,
+          "name":"listing",
+        },
+          {
+          "value": meanNightsbronx,
+          "name": "avgzone"
+        },
+          {
+          "value": meanNig,
+          "name":"avgNYC"
+        }
         ]
       },
       {
         'category': "totalreviews",
         'values': [
           {
-          "listingValue": listing.totalreviews,
-          "areaAvg": meanTotalRevbronx,
-          "nycAvg": meanTR
-          }
+          "value":listing.totalreviews,
+          "name":"listing",
+        },
+          {
+          "value": meanTotalRevbronx,
+          "name": "avgzone"
+        },
+          {
+          "value": meanPrice,
+          "name":"avgNYC"
+        }
         ]
       },
       {
         'category': "availability",
         'values': [
           {
-          "listingValue": listing.availability,
-          "areaAvg": meanAvailbronx,
-          "nycAvg": meanavail
-          }
+          "value":listing.availability,
+          "name":"listing",
+        },
+          {
+          "value": meanAvailbronx,
+          "name": "avgzone"
+        },
+          {
+          "value": meanavail,
+          "name":"avgNYC"
+        }
         ]
       }
     ]
 
     let categoryNames = data.map(function(d) { return d.category; });
-    let listingNames = ['listing Value','AvgBronx','AvgNYC'];
+    let listingNames = data[0].values.map(function(d) { return d.name; });
 
     x0Scale.domain(categoryNames);
     x1.domain(listingNames).rangeRound([0,x0Scale.bandwidth()]);
-    yScale.domain([0, d3.max(data, function(category) { return d3.max(category.values, function(d) { return d.listingValue; }); })]);
+    yScale.domain([0, d3.max(data, function(category) { return d3.max(category.values, function(d) { return d.value; }); })]);
 
     viz.append("g")
         .attr("class", "x axis")
@@ -171,27 +199,48 @@ function gotData(incomingData){
     graph.selectAll("rect").data(function(d) { return d.values; })
               .enter().append("rect")
                           .attr("width", x1.bandwidth())
-                          .attr("x", function(d,i) { return x1(listingNames.length) })
-                          .attr("fill", function(d) { return color(d.length) })
-                          .attr("y", 6)
-                          .attr("height", function(d) {return d.listingValue; })
+                          .attr("x", function(d){return x1(d.name);})
+                          .attr("fill", function(d) { return color(d.name); })
+                          .attr("y", function(d){return yScale(0);})
+                          .attr("height", function(d) {return d.value; })
                           .on("mouseover", function(d) {
-            d3.select(this).style("fill", d3.rgb(color(d.listingValue)).darker(2));
+            d3.select(this).style("fill", d3.rgb(color(d.name)).darker(2));
         })
                           .on("mouseout", function(d) {
-            d3.select(this).style("fill", color(d.listingValue));
+            d3.select(this).style("fill", color(d.name));
         });
 
-    
+
 
     graph.selectAll("rect")
             .transition()
             .delay(function (d) {return Math.random()*1000;})
             .duration(1000)
-            .attr("y", function(d) { return yScale(d.listingValue); })
-            .attr("height", function(d) { return height - yScale(d.listingValue); })
+            .attr("y", function(d) { return yScale(d.value); })
+            .attr("height", function(d) { return height - yScale(d.value); })
       ;
 
+    let legend = viz.selectAll(".legend")
+        .data(data[0].values.map(function(d) { return d.name; }).reverse())
+        .enter().append("g")
+                    .attr("class", "legend")
+                    .attr("transform", function(d,i) { return "translate(0," + i * 20 + ")"; })
+                    .attr("opacity","0");
+
+    legend.append("rect")
+              .attr("x", 65)
+              .attr("width", 18)
+              .attr("height", 12)
+              .attr("fill", function(d) { return color(d); });
+
+    legend.append("text")
+            .attr("x", 62)
+            .attr("y", 6)
+            .attr("dy", ".35em")
+            .style("text-anchor", "end")
+            .text(function(d) {return d; });
+
+    legend.transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1");
 
 
 
