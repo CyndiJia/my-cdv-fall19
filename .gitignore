@@ -1,19 +1,19 @@
-# hi, below I have populated your .gitignore file 
-# with a lot of common filenames that, if they show up, 
-# you likely want to ignore. 
-# You can add you own file or folder names here if 
+# hi, below I have populated your .gitignore file
+# with a lot of common filenames that, if they show up,
+# you likely want to ignore.
+# You can add you own file or folder names here if
 # you decide you do NOT want to upload something to GitHub
-# (e.g. to protect sensitive information or because a 
+# (e.g. to protect sensitive information or because a
 # file is really large (we don't want huge files on github))
 
 # for example, to prevent anything in a folder named "ignore-this"
 # (and the folder itself) from being uploaded,
-# we simply write it as I do on the next like: 
+# we simply write it as I do on the next like:
 
 **ignore-this
 
-# the "**" means that it does not matter where in your 
-# project the ignore-this folder shows up, 
+# the "**" means that it does not matter where in your
+# project the ignore-this folder shows up,
 # it will always be ignored
 
 ------
@@ -187,3 +187,134 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/vim,osx,node,windows
+
+
+
+# Created by https://www.gitignore.io/api/python,virtualenv
+# Edit at https://www.gitignore.io/?templates=python,virtualenv
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# pyenv
+.python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+### VirtualEnv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-selfcheck.json
+
+# End of https://www.gitignore.io/api/python,virtualenv
