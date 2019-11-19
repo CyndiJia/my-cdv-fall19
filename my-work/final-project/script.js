@@ -1,13 +1,13 @@
 let margin = {top: 10, right: 30, bottom: 30, left: 40},
     width = 1250 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    height = 800 - margin.top - margin.bottom;
 
 function gotData(incomingData){
 
   let graph = d3.select('#container')
                   .append("svg")
                       .attr("width",1250)
-                      .attr("height",700)
+                      .attr("height",800)
                   .append("g")
                       .attr("transform","translate(" + margin.left + "," + margin.top + ")")
   ;
@@ -29,7 +29,7 @@ function gotData(incomingData){
     console.log(forChart);
 
      let radiusScale = d3.scaleSqrt()
-                              .domain([0, 55])
+                              .domain([0, 64])
                               .range([12, 20]);
 
     let xScale = d3.scaleLinear()
@@ -43,7 +43,7 @@ function gotData(incomingData){
 
 
     let yScale = d3.scaleLinear()
-                    .domain([0, 55])
+                    .domain([0, 70])
                     .range([ height, 0 ]);
     yAxis = d3.axisLeft(yScale);
     let yAxisGroup = graph.append("g").attr("class", "yaxis");
@@ -60,13 +60,18 @@ function gotData(incomingData){
                   .range(["transparent",  "red"])
     ;
 
+    let colorafter = d3.scaleLinear()
+                  .domain([756, 0])
+                  .range(["transparent",  "purple"])
+    ;
+
     // Compute the hexbin data
     let hexbin = d3.hexbin()
                     .radius(15) // size of the bin in px
                     .extent([ [0, 0], [width, height] ])
     ;
 
-    console.log(hexbin(inputForHexbin));
+    // console.log(hexbin(inputForHexbin));
 
     // Plot the hexbins
     graph.append("clipPath")
@@ -84,11 +89,12 @@ function gotData(incomingData){
 
     let density = graph.append("g")
                           .attr("clip-path", "url(#clip)")
+                        .append('a').attr("xlink:href",'https://www.youtube.com/watch?v=aBwOMlSjh48')
                         .selectAll("path")
                         .data( hexbin(inputForHexbin) )
                         .enter().append("path")
                           .attr("d", hexbin.hexagon())
-                          .attr("transform", function(d) { return "translate(" + (d.x-2) + "," + (d.y-8)+ ")"; })
+                          .attr("transform", function(d) { return "translate(" + (d.x) + "," + (d.y-10)+ ")"; })
                           .attr("fill", function(d) { return color(d.y); })
                           .attr("stroke", "black")
                           .attr("stroke-width", "0.2")
@@ -98,16 +104,11 @@ function gotData(incomingData){
       .on("mouseover",function(){
         console.log("hovering");
         let element = d3.select(this);
-        element.transition().attr("d", d => hexbin.hexagon(radiusScale((d.y))))
+        element.transition().duration(1000).attr("fill",function(d) { return colorafter(d.y); }).attr("d", d => hexbin.hexagon(radiusScale((d.y))))
       })
       .on("mouseout",function(){
         let element = d3.select(this);
-        element.transition().attr("d", d => hexbin.hexagon())
-      })
-      .on("click",function(){
-        console.log('click');
-        let element = d3.select(this);
-        element.transition().attr('fill','blue');
+        element.transition().duration(1000).attr("fill", function(d) { return color(d.y); }).attr("d", d => hexbin.hexagon())
       })
     ;
 
