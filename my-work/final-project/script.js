@@ -87,9 +87,11 @@ function gotData(incomingData){
     //   whole.attr("background","black");
     // })
 
+    // https://www.youtube.com/watch?v=aBwOMlSjh48
+
     let density = graph.append("g")
                           .attr("clip-path", "url(#clip)")
-                        .append('a').attr("xlink:href",'https://www.youtube.com/watch?v=aBwOMlSjh48')
+                        .append('a').attr("xlink:href",'storywordcloud.html')
                         .selectAll("path")
                         .data( hexbin(inputForHexbin) )
                         .enter().append("path")
