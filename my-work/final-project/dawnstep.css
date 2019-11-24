@@ -1,0 +1,44 @@
+.main{
+  display: flex;
+  /* flex-wrap: wrap; */
+}
+
+
+.step{
+  border: solid black 1px;
+  width:500px;
+  height:300px;
+  /* margin-left: 10%; */
+  width: 50%;
+}
+
+#textboxes {
+  width: 50%;
+  /* border: red 1px solid; */
+  height: 100vh;
+  overflow: scroll;
+}
+
+.box{
+  margin-bottom: 60vh;
+  padding:30px;
+  border-top: 1px black solid;
+}
+
+#right{
+  width: 50px;
+}
+
+#left{
+  width: 50px;
+}
+
+#right:hover{
+  transition: 1s;
+  width:60px;
+}
+
+#left:hover{
+  transition: 1s;
+  width:60px;
+}

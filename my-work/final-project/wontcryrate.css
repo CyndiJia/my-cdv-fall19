@@ -1,0 +1,29 @@
+.rate{
+  border: solid black 1px;
+  width: 1000px;
+  height:620px;
+  margin-left: 10%;
+}
+
+.button{
+  margin-left: 41%;
+  margin-top: 1%;
+}
+
+#right{
+  width: 50px;
+}
+
+#left{
+  width: 50px;
+}
+
+#right:hover{
+  transition: 1s;
+  width:60px;
+}
+
+#left:hover{
+  transition: 1s;
+  width:60px;
+}

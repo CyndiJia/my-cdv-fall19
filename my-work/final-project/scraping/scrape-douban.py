@@ -9,7 +9,7 @@ import time
 # 1.get website as plain text string
 results = []
 
-pageId = 34815690
+pageId = 34802041
 baseUrl = "https://music.douban.com/subject/"+str(pageId)+"/comments/"
 pagingExt = "new?p="
 
@@ -63,7 +63,7 @@ while True:
             infoSpan = comment.select('.comment-info span')
 
             date_format = "%Y-%m-%d"
-            date1 = datetime.strptime("2019-9-16",date_format)
+            date1 = datetime.strptime("2019-8-24",date_format)
 
             if len(infoSpan) > 1:
                 rating = comment.select('.comment-info span')[0]['class'][1][-2:-1]
@@ -111,5 +111,5 @@ while True:
 # 4. save list as json
 
 print("saving as json")
-with open(str(34815690)+"_comments_"+str(pageNumber)+".json", "w", encoding="utf-8") as f:
+with open(str(34802041)+"_comments_"+str(pageNumber)+".json", "w", encoding="utf-8") as f:
     json.dump(results, f, indent=4, ensure_ascii=False)

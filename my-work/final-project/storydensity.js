@@ -13,7 +13,7 @@ function gotData(incomingData){
   ;
   // console.log(incomingData);
 
-  forChart = [];
+  let forChart = [];
   for(j = 0; j<60;j++){
     let num = 0;
     for(i = 0;i<incomingData.length;i++){
@@ -36,7 +36,7 @@ function gotData(incomingData){
                     .domain([0, 59])
                     .range([ 0, width ]);
 
-    xAxis = d3.axisBottom(xScale);
+    let xAxis = d3.axisBottom(xScale);
     let xAxisGroup = graph.append("g").attr("class", "xaxis");
     xAxisGroup.call(xAxis);
     xAxisGroup.attr("transform", "translate(0, "+ height +")");
@@ -45,7 +45,7 @@ function gotData(incomingData){
     let yScale = d3.scaleLinear()
                     .domain([0, 70])
                     .range([ height, 0 ]);
-    yAxis = d3.axisLeft(yScale);
+    let yAxis = d3.axisLeft(yScale);
     let yAxisGroup = graph.append("g").attr("class", "yaxis");
     yAxisGroup.call(yAxis);
 
