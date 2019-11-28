@@ -107,12 +107,47 @@ function gotData(incomingData){
         console.log("hovering");
         let element = d3.select(this);
         element.transition().duration(1000).attr("fill",function(d) { return colorafter(d.y); }).attr("d", d => hexbin.hexagon(radiusScale((d.y))))
+        d3.json("story.json").then(wordcloud);
       })
       .on("mouseout",function(){
         let element = d3.select(this);
         element.transition().duration(1000).attr("fill", function(d) { return color(d.y); }).attr("d", d => hexbin.hexagon())
+        d3.json("story.json").interrupt().then(wordcloud)
       })
     ;
+
+
+    function wordcloud(words){
+      // console.log(words);
+      let mywords = words.map(function(d){return d.finalcloud})
+      // console.log(mywords);
+
+      // Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
+      let layout = d3.layout.cloud().size([width, height])
+                            .words(mywords.map(function(d) { return {text: d[0]}; }))
+                            .padding(10)
+                            .fontSize(60)
+                            .on("end", draw);
+      layout.start();
+
+      function draw(words) {
+            graph
+              .append("g")
+                .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+                .selectAll("text")
+                  .data(words)
+                .enter().append("text")
+                  .style("font-size", function(d) {return d.size + "px"; })
+                  .style("opacity",0.1)
+                  .attr("text-anchor", "middle")
+                  .attr("transform", function(d) {
+                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                  })
+                  .text(function(d) { return d.text; });
+          }
+      }
+
+
 
 
 

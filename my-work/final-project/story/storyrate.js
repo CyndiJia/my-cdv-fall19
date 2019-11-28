@@ -63,7 +63,8 @@ function gotData(incomingData){
   let yAxisGroup = distri.append("g").attr("class", "yaxis");
   yAxisGroup.call(yAxis);
 
-
+  let wordcloud = div.append("svg");
+  wordcloud.append("circle").attr("r", 10);
 
   distri.selectAll("rect").data(forChart).enter()
                                             .append("rect")
@@ -75,8 +76,13 @@ function gotData(incomingData){
                                                 .attr("height", yScale.bandwidth())
                                                 .attr("fill","green")
                                               .on("mouseover",function(d){
-                                                console.log('hi');
-                                                div.transition().duration(1000).style("opacity",1);
+                                                console.log('hi', d);
+                                                div.select("circle").transition().delay(100).attr("cx", function(){
+                                                  return d.rating*20
+                                                }).attr("cy", function(){
+                                                  return d.rating*20
+                                                })
+                                                div.transition().duration(1000).style("opacity",0.8);
                                                 div.style("left",(xScale(d.num)+350)/2+"px").style("top",(yScale(d.rating)+yScale.bandwidth())+"px");
                                               })
   ;
