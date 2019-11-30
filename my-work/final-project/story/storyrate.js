@@ -38,6 +38,9 @@ function gotData(incomingData){
       .style("opacity", 0)
     ;
 
+   let colors = ["red","orange","purple","blue","grey"]
+
+
   let xMax = d3.max(forChart, function(d){
         return d.num;
         });
@@ -57,7 +60,7 @@ function gotData(incomingData){
   let yScale = d3.scaleBand()
                   .domain(forChart.map(function(d){return d.rating;}))
                   .range([ height, 0 ])
-                  .padding(0.1)
+                  .padding(0.25)
   ;
   let yAxis = d3.axisLeft(yScale);
   let yAxisGroup = distri.append("g").attr("class", "yaxis");
@@ -74,7 +77,8 @@ function gotData(incomingData){
                                                   return yScale(d.rating);
                                                 })
                                                 .attr("height", yScale.bandwidth())
-                                                .attr("fill","green")
+                                                .attr("fill",function(d,i){return colors[4-i];})
+                                                .style("opacity",.6)
                                               .on("mouseover",function(d){
                                                 console.log('hi', d);
                                                 div.select("circle").transition().delay(100).attr("cx", function(){

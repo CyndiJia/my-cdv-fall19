@@ -1,5 +1,10 @@
 [
     {
+        "date": "2019-09-19T00:00:00.000Z",
+        "salesamount": 0,
+        "achievement": "none"
+    },
+    {
         "date": "2019-09-19T16:04:00.000Z",
         "salesamount": 250000,
         "achievement": "Gold Album; \"JJJane\" bought 667 of them; Hubei fan group bought 724, contributing 0.87%"

@@ -11,9 +11,9 @@ let w, h;
 let heightRatio = 1;
 let padding = 90;
 
-let margin = {top: 30, right: 30, bottom: 30, left: 60},
-    width = 600 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+let margin = {top: 30, right: 10, bottom: 30, left: 60},
+    width = 700 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
 
@@ -21,7 +21,7 @@ let margin = {top: 30, right: 30, bottom: 30, left: 60},
         .append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
-          .style("background-color", "lavender")
+          .style("margin-left","20px")
         .append("g")
           .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
@@ -55,44 +55,90 @@ function gotData(incomingData){
 
 
   let xScale = d3.scaleBand()
-                  .domain(date)
+                  .domain(date.filter(function(d,i){return i<1}))
                   .range([ 0, width ]);
 
   let xAxis = d3.axisBottom(xScale);
   let xAxisGroup = viz.append("g").attr("class", "xaxis");
   xAxisGroup.call(xAxis);
-  xAxisGroup.attr("transform", "translate(0, "+ height +")");
+  xAxisGroup.attr("transform", "translate(-40, "+ height +")");
 
 
   let yScale = d3.scaleLinear()
-                  .domain([0, 5000000])
+                  .domain([0, 15000000])
                   .range([ height, 0 ]);
   let yAxis = d3.axisLeft(yScale);
   let yAxisGroup = viz.append("g").attr("class", "yaxis");
   yAxisGroup.call(yAxis);
 
+  drawline(1);
+  // drawline(2);
+  // drawline(3);
+  // drawline(4);
+  // drawline(5);
+  // drawline(6);
+  // drawline(7);
+  // drawline(8);
 
-  viz.append("path")
-      .datum(forChart)
-      .attr("fill", "none")
-      .attr("stroke", "#69b3a2")
-      .attr("stroke-width", 1.5)
-      .attr("d", d3.line()
-        .x(function(d) { return xScale(d.dateee); })
-        .y(function(d) { return yScale(d.salesss); })
-      )
-    ;
+  function updatexAxis(filnum){
+    xScale.domain(date.filter(function(d,i){return i<filnum}))
+          .range([0,width]);
+    let xAxis = d3.axisBottom(xScale);
+    xAxisGroup.transition().call(xAxis);
+  }
 
-    viz.append("g")
-        .selectAll("dot")
-        .data(forChart)
-        .enter()
-        .append("circle")
-          .attr("cx", function(d) { return xScale(d.dateee) } )
-          .attr("cy", function(d) { return yScale(d.salesss) } )
-          .attr("r", 5)
-          .attr("fill", "#69b3a2")
+  function drawline(filnum){
+
+    // updatexAxis(filnum);
+    let lines = viz.append("path")
+                    .datum(forChart.filter(function(d,i){return i<filnum;}))
+
+    lines.attr("fill", "none")
+        .attr("stroke", "#69b3a2")
+        .attr("stroke-width", 1.5)
+        .attr("d", d3.line()
+          .x(function(d) { return xScale(d.dateee); })
+          .y(function(d) { return yScale(d.salesss); })
+        )
       ;
+
+
+      viz.append("g")
+          .selectAll("dot")
+          .data(forChart.filter(function(d,i){return i < filnum;}))
+          .enter()
+          .append("circle")
+            .attr("cx", function(d) { return xScale(d.dateee) } )
+            .attr("cy", function(d) { return yScale(d.salesss) } )
+            .attr("r", 5)
+            .attr("fill", "#69b3a2")
+            .on("mouseover",function(d){console.log(d.salesss);return d.salesss})
+        ;
+  }
+
+
+  // scrolling event listener
+  // you might move this block into the part of your code
+  // in which your data is loaded/available
+  let previousSection;
+  d3.select("#textboxes").on("scroll", function(){
+    // the currentBox function is imported on the
+    // very fist line of this script
+    currentBox(function(box){
+      console.log(box.id);
+      for(let i = 0;i<9;i++)
+      if(box.id==i.toString() && box.id!=previousSection){
+        console.log("changing viz");
+        // trigger a new transition
+        updatexAxis(i);
+        drawline(i);
+        previousSection = box.id;
+      }
+
+    })
+  })
+
+
 
 
 
@@ -100,25 +146,6 @@ function gotData(incomingData){
 }
 
 d3.json("storyprogress.json").then(gotData);
-
-// scrolling event listener
-// you might move this block into the part of your code
-// in which your data is loaded/available
-let previousSection;
-d3.select("#textboxes").on("scroll", function(){
-  // the currentBox function is imported on the
-  // very fist line of this script
-  currentBox(function(box){
-    console.log(box.id);
-
-    if(box.id=="two" && box.id!=previousSection){
-      console.log("changing viz");
-      // trigger a new transition
-      previousSection = box.id;
-    }
-
-  })
-})
 
 
 

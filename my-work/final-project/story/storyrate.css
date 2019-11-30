@@ -1,13 +1,24 @@
+.main{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 .rate{
-  border: solid black 1px;
+  /* border: solid black 1px; */
   width: 1000px;
   height:620px;
   margin-left: 10%;
+  margin-top: -3%;
 }
 
 .button{
-  margin-left: 41%;
+  margin-left: 43%;
   margin-top: 1%;
+}
+
+#title{
+  margin-left: 29%;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 #right{

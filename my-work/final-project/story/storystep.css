@@ -1,13 +1,17 @@
 .main{
   display: flex;
+  flex-wrap: wrap;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#title{
+  margin-left: 23%;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 
 .step{
-  /* border: solid black 1px; */
-  /* width:500px;
-  height:300px; */
-  /* margin-left: 6px; */
   width: 60%;
 }
 
@@ -19,9 +23,10 @@
 }
 
 .box{
-  margin-bottom: 60vh;
-  padding:30px;
-  border-top: 1px black solid;
+  margin-bottom: 71vh;
+  padding:20px;
+
+  /* border-top: 1px black solid; */
 }
 
 #right{
@@ -40,4 +45,8 @@
 #left:hover{
   transition: 1s;
   width:60px;
+}
+
+.button{
+  margin-left: 42%;
 }
