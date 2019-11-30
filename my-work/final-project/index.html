@@ -8,28 +8,50 @@
   <body>
     <div class="main">
       <a href="story/storystep.html">
-        <div class="story">
+        <div id="story">
           The Story of Us
         </div>
       </a>
       <a href="wontcry/wontcrystep.html">
-        <div class="wontcry">
+        <div id="wontcry">
           Won't Cry
         </div>
       </a>
       <a href="dawn/dawnstep.html">
-        <div class="dawn">
+        <div id="dawn">
           Dawn
         </div>
       </a>
       <a href="rival/rivalstep.html">
-        <div class="rival">
+        <div id="rival">
           The Rivals
         </div>
       </a>
-      <div class="description">
-          introduction of that song when hovering
+      <div id="description">
+          <p id="des">introduction of that song when hovering</p>
       </div>
     </div>
+    <script>
+        function story(){
+          document.getElementById('description').innerHTML = "hahaha"
+        }
+
+        function wontcry(){
+          document.getElementById('description').innerHTML = "hihihi"
+        }
+
+        function dawn(){
+          document.getElementById('description').innerHTML = "hehehe"
+        }
+
+        function rival(){
+          document.getElementById('des').innerHTML = "huhuhu";
+        }
+
+        document.getElementById('story').onmouseover = function(){story();};
+        document.getElementById('wontcry').onmouseover = function(){wontcry();};
+        document.getElementById('dawn').onmouseover = function(){dawn();};
+        document.getElementById('rival').onmouseover = function(){rival();};
+    </script>
   </body>
 </html>

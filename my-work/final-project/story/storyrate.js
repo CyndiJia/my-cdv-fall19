@@ -67,7 +67,7 @@ function gotData(incomingData){
   yAxisGroup.call(yAxis);
 
   let wordcloud = div.append("svg");
-  wordcloud.append("circle").attr("r", 10);
+  // wordcloud.append("circle").attr("r", 10);
 
   distri.selectAll("rect").data(forChart).enter()
                                             .append("rect")

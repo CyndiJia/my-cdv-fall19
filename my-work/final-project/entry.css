@@ -14,47 +14,47 @@
   text-decoration: none;
 }
 
-.story{
+#story{
   background-color: yellow;
   width: 200px;
   height:100px;
 }
 
-.story:hover{
+#story:hover{
   background-color: violet;
 }
 
-.wontcry{
+#wontcry{
   background-color: yellow;
   width: 200px;
   height:100px;
 }
 
-.wontcry:hover{
+#wontcry:hover{
   background-color: violet;
 }
 
-.dawn{
+#dawn{
   background-color: yellow;
   width: 200px;
   height:100px;
 }
 
-.dawn:hover{
+#dawn:hover{
   background-color: violet;
 }
 
-.rival{
+#rival{
   background-color: yellow;
   width: 200px;
   height:100px;
 }
 
-.rival:hover{
+#rival:hover{
   background-color: violet;
 }
 
-.description{
+#description{
   margin-top: 100px;
   width:1100px;
   height:200px;

@@ -67,7 +67,7 @@ function gotData(incomingData){
 
     // Compute the hexbin data
     let hexbin = d3.hexbin()
-                    .radius(15) // size of the bin in px
+                    .radius(20) // size of the bin in px
                     .extent([ [0, 0], [width, height] ])
     ;
 
