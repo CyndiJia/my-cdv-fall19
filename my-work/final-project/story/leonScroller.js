@@ -4,7 +4,7 @@ export default function currentBox(cb){
   let scrollTop = event.target.scrollTop;
   let targetRec = event.target.getBoundingClientRect();
   let firstBoxRec = boxes[0].getBoundingClientRect();
-  let midpoint = scrollTop + targetRec.height/2;
+  let midpoint = scrollTop + targetRec.height;
 
   let closestBox = boxes.reduce(function(closest, box){
     box.style.color = "black";

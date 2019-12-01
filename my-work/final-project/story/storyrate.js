@@ -33,10 +33,13 @@ function gotData(incomingData){
                   .attr("transform",
                         "translate(" + margin.left + "," + margin.top + ")")
 
-  let div = d3.select(".rate").append("div")
-      .attr("class", "tooltip")
-      .style("opacity", 0)
+  let div = d3.select(".rate")
+                  .append("div")
+                  .attr("class", "tooltip")
+                  .style("opacity", 0)
     ;
+
+  let labels = div.append("text");
 
    let colors = ["red","orange","purple","blue","grey"]
 
@@ -69,6 +72,11 @@ function gotData(incomingData){
   let wordcloud = div.append("svg");
   // wordcloud.append("circle").attr("r", 10);
 
+  total = 0;
+  for(let i = 0; i<forChart.length;i++){
+    total += Number(forChart[i].num);
+  }
+
   distri.selectAll("rect").data(forChart).enter()
                                             .append("rect")
                                                 .attr("width",function(d){return xScale(d.num)})
@@ -86,7 +94,8 @@ function gotData(incomingData){
                                                 }).attr("cy", function(){
                                                   return d.rating*20
                                                 })
-                                                div.transition().duration(1000).style("opacity",0.8);
+                                                div.transition().duration(1000).style("opacity",0.65);
+                                                labels.text("Number: "+d.num+"\n"+"Ratio: "+d3.format(".2f")(d.num/total)*100+"%").attr("x","100").attr("y","50").attr("color",'white');
                                                 div.style("left",(xScale(d.num)+350)/2+"px").style("top",(yScale(d.rating)+yScale.bandwidth())+"px");
                                               })
   ;

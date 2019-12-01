@@ -75,9 +75,6 @@ function gotData(incomingData){
   let yAxisGroup = viz.append("g").attr("class", "yaxis");
   yAxisGroup.call(yAxis);
 
-  let linegroup = viz.append("g").attr("class", "linegroup")
-  let theline = linegroup.append("path").attr("class", "theline");
-
   drawline(1);
   // drawline(2);
   // drawline(3);
@@ -94,14 +91,13 @@ function gotData(incomingData){
     xAxisGroup.transition().call(xAxis);
   }
 
-
   function drawline(filnum){
 
     // updatexAxis(filnum);
-    // console.log("HEY");
-    theline.datum(forChart.filter(function(d,i){return i<filnum;}))
+    let lines = viz.append("path")
+                    .datum(forChart.filter(function(d,i){return i<filnum;}))
 
-    theline.attr("fill", "none")
+    lines.attr("fill", "none")
         .attr("stroke", "#69b3a2")
         .attr("stroke-width", 1.5)
         .attr("d", d3.line()
@@ -111,26 +107,17 @@ function gotData(incomingData){
       ;
 
 
-      let theSituation = linegroup.selectAll(".dot").data(forChart.filter(function(d,i){return i < filnum;}))
-      theSituation.enter()
+      viz.append("g")
+          .selectAll("dot")
+          .data(forChart.filter(function(d,i){return i < filnum;}))
+          .enter()
           .append("circle")
-            .attr("class", "dot")
             .attr("cx", function(d) { return xScale(d.dateee) } )
-            .attr("cy", function(d) { return 0 } )
+            .attr("cy", function(d) { return yScale(d.salesss) } )
             .attr("r", 5)
             .attr("fill", "#69b3a2")
             .on("mouseover",function(d){console.log(d.salesss);return d.salesss})
-            .transition()
-            .attr("cy", function(d) { return yScale(d.salesss) } )
         ;
-        theSituation
-          .transition()
-          .attr("cx", function(d) { return xScale(d.dateee) +xScale.bandwidth()/2 } )
-          .attr("cy", function(d) { return yScale(d.salesss) } )
-
-        theSituation.exit().transition()
-          .attr("cy", function(d) { return yScale(0) } )
-          .remove()
   }
 
 

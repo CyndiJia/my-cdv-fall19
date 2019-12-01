@@ -51,10 +51,9 @@ function gotData(incomingData){
 
     // Reformat the data: d3.hexbin() needs a specific format
     let inputForHexbin = []
-    forChart.forEach(function(d) {
-      inputForHexbin.push( [xScale(d.day), yScale(d.num)] )  // Note that we had the transform value of X and Y !
+    forChart.filter(function(d){return d.num != '0'}).forEach(function(d) {
+      inputForHexbin.push( {x:xScale(d.day), y:yScale(d.num), data:d} )  // Note that we had the transform value of X and Y !
     });
-
     let color = d3.scaleLinear()
                   .domain([756, 0])
                   .range(["transparent",  "red"])
@@ -67,19 +66,38 @@ function gotData(incomingData){
 
     // Compute the hexbin data
     let hexbin = d3.hexbin()
-                    .radius(20) // size of the bin in px
+                    .radius(16) // size of the bin in px
                     .extent([ [0, 0], [width, height] ])
+                    .x(d=>d.x)
+                    .y(d=>d.y)
     ;
+
+    console.log(hexbin(inputForHexbin) );
+
+
+    // CREATE CONTAINER GROUP FOR WORD cloud
+    let cloudgg = graph.append("g").attr("class","cllll")
+      .attr("transform", "translate(0,0)")
+    ;
+
+    let wordclouddata;
+    // load story.json and assign to above varible;
+    d3.json('story.json').then(function(data){
+      // console.log("word data oaded");
+      wordclouddata = data;
+    })
+
 
     // console.log(hexbin(inputForHexbin));
 
     // Plot the hexbins
-    graph.append("clipPath")
-          .attr("id", "clip")
-        .append("rect")
-          .attr("width", width)
-          .attr("height", height)
-    ;
+
+    // graph.append("clipPath")
+    //       .attr("id", "clip")
+    //     .append("rect")
+    //       .attr("width", width)
+    //       .attr("height", height)
+    // ;
 
     // graph.on('click',function(){
     //   console.log('whole');
@@ -90,8 +108,8 @@ function gotData(incomingData){
     // https://www.youtube.com/watch?v=aBwOMlSjh48
 
     let density = graph.append("g")
-                          .attr("clip-path", "url(#clip)")
-                        .append('a').attr("xlink:href",'storywordcloud.html')
+                          // .attr("clip-path", "url(#clip)")
+                        // .append('a').attr("xlink:href",'storywordcloud.html')
                         .selectAll("path")
                         .data( hexbin(inputForHexbin) )
                         .enter().append("path")
@@ -103,48 +121,101 @@ function gotData(incomingData){
     ;
 
     density
-      .on("mouseover",function(){
-        console.log("hovering");
+      .on("mouseover",function(d){
+        console.log("hovering", d[0].data.day);
         let element = d3.select(this);
         element.transition().duration(1000).attr("fill",function(d) { return colorafter(d.y); }).attr("d", d => hexbin.hexagon(radiusScale((d.y))))
-        d3.json("story.json").then(wordcloud);
+        // d3.json("story.json").then(wordcloud);
+        // get day out of d and pass to wordcloud function
+        let day =  d[0].data.day;
+        wordcloud(day);
+
       })
       .on("mouseout",function(){
         let element = d3.select(this);
         element.transition().duration(1000).attr("fill", function(d) { return color(d.y); }).attr("d", d => hexbin.hexagon())
-        d3.json("story.json").interrupt().then(wordcloud)
+        // d3.json("story.json").then(function(){return})
+        cloudgg.selectAll("text").remove();
       })
     ;
 
 
-    function wordcloud(words){
-      // console.log(words);
-      let mywords = words.map(function(d){return d.finalcloud})
+    function wordcloud(day){
+      let words = wordclouddata[day].finalcloud;
+      filteredwds = words.filter(function(d){return d.length!=1;})
+      words = filteredwds.map(d=>{return{text:d} } )   ;
+      // console.log(day);
+
+      // all of this you do depending on day:
+      // let mywords = words.map(function(d){return d.finalcloud})
+
       // console.log(mywords);
+      //
+      // // Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
+      let layout = d3.layout.cloud().size([width/2, height/2])
+                            .words(words);
 
-      // Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
-      let layout = d3.layout.cloud().size([width, height])
-                            .words(mywords.map(function(d) { return {text: d[0]}; }))
-                            .padding(10)
-                            .fontSize(60)
-                            .on("end", draw);
+      layout.padding(10)
+                .fontSize(30)
+                .on("end", draw);
       layout.start();
+      //
+      //
+      //
+      // // you draw wordcoud into the cointainer created abve
+      // // dont append a new group
+      //
+      function draw() {
+        console.log(words);
+        let theSituation = cloudgg.selectAll("text").data(words);
 
-      function draw(words) {
-            graph
-              .append("g")
-                .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
-                .selectAll("text")
-                  .data(words)
-                .enter().append("text")
+
+
+          cloudgg.attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+
+          theSituation.enter().append("text")
+                    .transition()
+                    .duration(800)
+                    .style("font-size", function(d) {return d.size + "px"; })
+                    .style("opacity",0.7)
+                    .attr("text-anchor", "middle")
+                    .attr("transform", function(d) {
+                      return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                    })
+                    .text(function(d) { return d.text; });
+
+        theSituation
+                  .transition()
                   .style("font-size", function(d) {return d.size + "px"; })
-                  .style("opacity",0.1)
-                  .attr("text-anchor", "middle")
                   .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
                   })
                   .text(function(d) { return d.text; });
-          }
+        theSituation.exit().remove();
+      //
+      // cloudgg.selectAll("text")
+      //         .data(words).enter()
+              // .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+      //
+      //
+      // cloudgg.append("text")
+      //             .transition()
+      //             .duration(400)
+      //             .style("font-size", function(d) {return d.size + "px"; })
+      //             .style("opacity",0.7)
+      //             .attr("text-anchor", "middle")
+      //             .attr("transform", function(d) {
+      //               return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+      //             })
+      //             .text(function(d) { return d.text; });
+
+      // // cloudgg.exit()
+      //     .transition()
+      //         .duration(200)
+      //         .style('opacity', 0)
+      //         .attr('font-size', 1)
+      //         .remove();
+        }
       }
 
 
