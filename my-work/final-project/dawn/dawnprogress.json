@@ -1,16 +1,16 @@
 [
     {
-        "date": "2019-08-07T02:00:00.000Z",
+        "date": "2019-08-07T10:00:00.000Z",
         "salesamount": 1000000,
         "achievement": "Platinum Album; \"niucanbank\" bought 10; \"Fan Galaxy\" bought 220168"
     },
     {
-        "date": "2019-08-07T02:09:00.000Z",
+        "date": "2019-08-07T10:09:00.000Z",
         "salesamount": 2000000,
         "achievement": "Double Platinum Album; \"Fan Galaxy\" bought 220168;\"Wind and fire wheels\" bought 89317, contributing 13.18% "
     },
     {
-        "date": "2019-08-07T05:48:00.000Z",
+        "date": "2019-08-07T13:48:00.000Z",
         "salesamount": 3000000,
         "achievement": "Triple Platinum Album; \"Fan Galaxy\" bought 220168; Another \"Fan Galaxy\" bought 243263, contributing 24.31%"
     }

@@ -3,32 +3,44 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="dawnstep.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
     <title></title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="module" src="leonScroller.js"></script>
+    <script src="https://d3js.org/d3-time.v1.min.js"></script>
+    <script src="https://d3js.org/d3-time-format.v2.min.js"></script>
+    <script type="module" src="dawnstep.js"></script>
   </head>
   <body>
     <div class="main">
+      <p id="title">Progress of achievements of "Dawn" on QQ Music</p>
       <div class="step">
-          Progress of achievements of "Dawn" on QQ Music - (Scrolling page with change of data)
       </div>
       <div id="textboxes">
-        <div class="box" id="zero">
-          <h3>I guess I'll start</h3>
+        <div class="box" id="0">
+          <h3>On <span style="color:#69b3a2">Aug 7th 00:00, 2019</span>, "Dawn" was officially released on QQ Music, which is one of Chinese mainstream music platforms for selling digital songs/albums.
+          As soon as it was published, "Dawn" achieved a total sales of 1000,000 and was identified as the <span style="color:#b3697a">"Platinum Album"</span> on QQ Music.
+         A fan named "niucanbank" bought 10 of them. "Fan Galaxy" Group bought 220168 of them.</h3>
         </div>
-        <div class="box" id="one">
-          <h3>1️⃣</h3>
+        <div class="box" id="1">
+          <h3>On <span style="color:#69b3a2">Aug 7th 00:19, 2019</span>, "Won't Cry" achieved a total sales of 2000,000 rmb and was identified as the <span style="color:#b3697a">"Double Platinum Album"</span> on QQ Music.
+          "Fan Galaxy" Group bought 220168 of them, and a fan named "Wind and Fire Wheels" bought 89317 of them, contributing 13.18%.</h3>
         </div>
-        <div class="box" id="two">
-          <h3>two</h3>
+        <div class="box" id="2">
+          <h3>On <span style="color:#69b3a2">Aug 7th 00:19, 2019</span>, "Won't Cry" achieved a total sales of 3000,000 rmb and was identified as the <span style="color:#b3697a">"Triple Platinum Album"</span> on QQ Music.
+          "Fan Galaxy" Group bought 220168 of them, and another "Fan Galaxy" Group bought 243263 of them, contributing 24.31%.</h3>
         </div>
-        <div class="box" id="fish">
-          <h1>🐠</h1>
+        <div class="box" id="3">
+          <h3>The End.</h3>
         </div>
-        <div class="button">
-          <a href="../index.html"><img src="../left.png" alt="" id = "left"/></a>
-          <a href="dawnrate.html"><img src="../right.png" alt="" id = "right"/></a>
-        </div>
-      </div>
 
+
+      </div>
+      <div class="button">
+        <a href="../index.html"><img src="../left.png" alt="" id = "left"/></a>
+        <a href="dawnrate.html"><img src="../right.png" alt="" id = "right"/></a>
+      </div>
     </div>
 
   </body>
