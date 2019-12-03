@@ -41,7 +41,6 @@ function gotData(incomingData){
 
   let labels = div.append("text");
 
-   let colors = ["red","orange","purple","blue","grey"]
 
 
   let xMax = d3.max(forChart, function(d){
@@ -69,6 +68,8 @@ function gotData(incomingData){
   let yAxisGroup = distri.append("g").attr("class", "yaxis");
   yAxisGroup.call(yAxis);
 
+  let colors = d3.scaleLinear().domain([0,xMax]).range(["#ffe4b2","#ff8100"]);
+
   let wordcloud = div.append("svg");
   // wordcloud.append("circle").attr("r", 10);
 
@@ -85,7 +86,7 @@ function gotData(incomingData){
                                                   return yScale(d.rating);
                                                 })
                                                 .attr("height", yScale.bandwidth())
-                                                .attr("fill",function(d,i){return colors[4-i];})
+                                                .attr("fill",function(d,i){return colors(d.num);})
                                                 .style("opacity",.6)
                                               .on("mouseover",function(d){
                                                 console.log('hi', d);
