@@ -1,13 +1,19 @@
 #container{
-  width:1000px;
-  height:620px;
-  border: solid black 1px;
-  margin-left: 10%;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+text{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#title{
+  margin-left: 19%;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .button{
   margin-left: 43%;
-  margin-top:63%;
+  /* margin-top:3%; */
 }
 
 #right{
@@ -16,6 +22,7 @@
 
 #left{
   width: 50px;
+  margin-top: 3%;
 }
 
 #right:hover{
@@ -26,4 +33,17 @@
 #left:hover{
   transition: 1s;
   width:60px;
+}
+
+#back{
+  position: relative;
+  margin-left: 1%;
+  width: 100px;
+  height:38px;
+  bottom:21px;
+  border: none;
+  background-color: red;
+  border-radius: 5px;
+  opacity: 0.8;
+  color: white;
 }

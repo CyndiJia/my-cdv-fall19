@@ -3,26 +3,30 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="rivaldensity.css">
+      <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <title></title>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
     <script type="text/javascript" src="rivaldensity.js"></script>
   </head>
   <body>
-    <div class="">
+    <div class="main">
       <div id="container">
-        Numbers of Comments of "The Rival" received each day
-      <div>
+        <p id="title">Numbers of Comments of "The Rival" received each day on Douban</p>
+      </div>
       <div class="button">
         <a href="rivalrate.html"><img src="../left.png" alt="" id = "left"/></a>
         <button type="button" name="button" id = 'back' onclick = "Back()">Back</button>
       </div>
-  </div>
-  <script type="text/javascript">
-      function Back(){
-        location.href="../index.html";
-      }
-  </script>
+
+    </div>
+    <script type="text/javascript">
+        function Back(){
+          location.href="../index.html";
+        }
+    </script>
+
   </body>
 
 </html>
