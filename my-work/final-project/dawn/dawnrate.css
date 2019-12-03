@@ -1,13 +1,24 @@
+.main{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 .rate{
-  border: solid black 1px;
+  /* border: solid black 1px; */
   width: 1000px;
   height:620px;
   margin-left: 10%;
+  margin-top: -3%;
 }
 
 .button{
   margin-left: 43%;
-  margin-top:1%;
+  margin-top: 1%;
+}
+
+#title{
+  margin-left: 29%;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 #right{
@@ -26,4 +37,23 @@
 #left:hover{
   transition: 1s;
   width:60px;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 120px;
+    height: 70px;
+    padding: 2px;
+    font-size: 18px;
+    background-color: black;
+    border: 0px;
+    color:white;
+    border-radius: 8px;
+    pointer-events: none;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+text{
+  margin-top: 20px;
 }

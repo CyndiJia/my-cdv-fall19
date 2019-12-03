@@ -72,13 +72,13 @@ function gotData(incomingData){
                     .y(d=>d.y)
     ;
 
-    console.log(hexbin(inputForHexbin) );
-
+    // console.log(hexbin(inputForHexbin) );
+    // console.log(forChart);
 
     // CREATE CONTAINER GROUP FOR WORD cloud
-    let cloudgg = graph.append("g").attr("class","cllll")
-      .attr("transform", "translate(0,0)")
-    ;
+    let cloudgg = graph.append("g")
+                          .attr("class","cllll");
+
 
     let wordclouddata;
     // load story.json and assign to above varible;
@@ -122,13 +122,15 @@ function gotData(incomingData){
 
     density
       .on("mouseover",function(d){
-        console.log("hovering", d[0].data.day);
+        // console.log("hovering", d[0].data.day);
         let element = d3.select(this);
         element.transition().duration(1000).attr("fill",function(d) { return colorafter(d.y); }).attr("d", d => hexbin.hexagon(radiusScale((d.y))))
         // d3.json("story.json").then(wordcloud);
         // get day out of d and pass to wordcloud function
         let day =  d[0].data.day;
-        wordcloud(day);
+        let posx = d[0].x;
+        let posy = d[0].y;
+        wordcloud(day,posx,posy);
 
       })
       .on("mouseout",function(){
@@ -140,10 +142,11 @@ function gotData(incomingData){
     ;
 
 
-    function wordcloud(day){
+    function wordcloud(day,posx,posy){
       let words = wordclouddata[day].finalcloud;
-      filteredwds = words.filter(function(d){return d.length!=1;})
-      words = filteredwds.map(d=>{return{text:d} } )   ;
+      filteredwds = words.filter(function(d){return d.length!=1 && d!="jj" && d!="JJ";})
+      words = filteredwds.map(d=>{return{text:d} } );
+
       // console.log(day);
 
       // all of this you do depending on day:
@@ -152,11 +155,11 @@ function gotData(incomingData){
       // console.log(mywords);
       //
       // // Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
-      let layout = d3.layout.cloud().size([width/2, height/2])
+      let layout = d3.layout.cloud().size([width/1.5, height/1.5])
                             .words(words);
 
       layout.padding(10)
-                .fontSize(30)
+                .fontSize(20)
                 .on("end", draw);
       layout.start();
       //
@@ -166,12 +169,23 @@ function gotData(incomingData){
       // // dont append a new group
       //
       function draw() {
-        console.log(words);
+        // console.log(words);
         let theSituation = cloudgg.selectAll("text").data(words);
 
+          console.log(posx);
+          if(posy>530 && posx > 1060){
+            cloudgg.attr("transform", "translate(960,530)");
+
+          }
+          else if(posy > 530){
+            cloudgg.attr("transform", "translate(" + posx + ",530)");
+          }
+          else{
+            cloudgg.attr("transform", "translate(" + posx + "," + posy + ")");
+          }
 
 
-          cloudgg.attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+
 
           theSituation.enter().append("text")
                     .transition()
@@ -192,29 +206,7 @@ function gotData(incomingData){
                   })
                   .text(function(d) { return d.text; });
         theSituation.exit().remove();
-      //
-      // cloudgg.selectAll("text")
-      //         .data(words).enter()
-              // .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
-      //
-      //
-      // cloudgg.append("text")
-      //             .transition()
-      //             .duration(400)
-      //             .style("font-size", function(d) {return d.size + "px"; })
-      //             .style("opacity",0.7)
-      //             .attr("text-anchor", "middle")
-      //             .attr("transform", function(d) {
-      //               return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-      //             })
-      //             .text(function(d) { return d.text; });
 
-      // // cloudgg.exit()
-      //     .transition()
-      //         .duration(200)
-      //         .style('opacity', 0)
-      //         .attr('font-size', 1)
-      //         .remove();
         }
       }
 

@@ -4,6 +4,10 @@
   font-family: 'Noto Sans KR', sans-serif;
 }
 
+text{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 #title{
   margin-left: 23%;
   font-weight: bold;
@@ -11,8 +15,10 @@
 }
 
 
+
 .step{
   width: 60%;
+  margin-top: 5%;
 }
 
 #textboxes {

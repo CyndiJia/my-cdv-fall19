@@ -19,7 +19,7 @@ let margin = {top: 30, right: 10, bottom: 30, left: 60},
 
     let viz = d3.select(".step")
         .append("svg")
-          .attr("width", width + margin.left + margin.right)
+          .attr("width", width+10 + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .style("margin-left","20px")
         .append("g")
@@ -37,39 +37,50 @@ let margin = {top: 30, right: 10, bottom: 30, left: 60},
 //my script
 function gotData(incomingData){
 
-
+  console.log(incomingData);
   // console.log(incomingData[6].date);
-  let rawdate = incomingData.map(function(d){return d.date})
   let parseDate = d3.timeParse("%Y-%m-%dT%H:%M:%S.%LZ");
-  let formatTime = d3.timeFormat("%m-%d %H:%M");
-  let date = rawdate.map(function(d){return formatTime(parseDate(d))})
-  let sales = incomingData.map(function(d){return d.salesamount})
-  console.log(sales);
+
+  incomingData.forEach(function(d){d.date = parseDate(d.date)})
+  console.log(incomingData);
+
+  // let formatTime = d3.timeFormat("%m-%d %H:%M");
+  // let date = rawdate.map(function(d){return formatTime(parseDate(d))})
+  // let sales = incomingData.map(function(d){return d.salesamount})
+  // console.log(sales);
 
   // let forChart = [];
   // for(let i = 0;i<date.length;i++){
   //   let ob = {"dateee":date[i],"salesss":sales[i]}
   //   forChart.push(ob);
   // }
-  let forChart = date.map((element, i)=>{
-    return {"dateee":element,"salesss":sales[i]}
+  let forChart = incomingData.map((element, i)=>{
+    return {"dateee":element.date,"salesss":element.salesamount}
   })
-
   console.log(forChart);
 
-
-  let xScale = d3.scaleBand()
-                  .domain(date.filter(function(d,i){return i<1}))
+  let datemin = d3.min(forChart, element=>{
+    // console.log(element.dateee);
+    return element.dateee
+  })
+  // console.log(dateextent);
+  // console.log(date.filter(function(d,i){return i<1}));
+  let xScale = d3.scaleTime()
+                  .domain([datemin, datemin])
                   .range([ 0, width ]);
 
   let xAxis = d3.axisBottom(xScale);
+  // xAxis.tickValues( forChart.map(d=>d.dateee));
+
   let xAxisGroup = viz.append("g").attr("class", "xaxis");
   xAxisGroup.call(xAxis);
   xAxisGroup.attr("transform", "translate(0, "+ height +")");
+  xAxisGroup.selectAll("text").attr("transform","rotate(60)");
+  xAxis.tickValues( [datemin] );
 
 
   let yScale = d3.scaleLinear()
-                  .domain([0, 15000000])
+                  .domain([0, 6000000])
                   .range([ height, 0 ]);
   let yAxis = d3.axisLeft(yScale);
   let yAxisGroup = viz.append("g").attr("class", "yaxis");
@@ -77,7 +88,6 @@ function gotData(incomingData){
 
   let linegroup = viz.append("g").attr("class", "linegroup")
   let theline = linegroup.append("path").attr("class", "theline");
-
   drawline(1);
   // drawline(2);
   // drawline(3);
@@ -87,11 +97,114 @@ function gotData(incomingData){
   // drawline(7);
   // drawline(8);
 
+  // updatexAxis(3);
   function updatexAxis(filnum){
-    xScale.domain(date.filter(function(d,i){return i<filnum}))
-          .range([0,width]);
-    let xAxis = d3.axisBottom(xScale);
+    let relevantPoints = forChart.filter(function(d,i){return i<filnum});
+    // console.log("relevant", relevantPoints);
+    let timeextent = d3.extent( relevantPoints, d=>{
+      return d.dateee;
+    })
+    let middledate = relevantPoints[parseInt(relevantPoints.length/2)].dateee
+    // xScale.domain(timeextent);
+    xScale.domain(timeextent);
+
+    // console.log("extent", timeextent);
+    // console.log(middledate);
+    console.log(filnum);
+    if(filnum==1){
+      let tickdates = forChart.map(d=>d.dateee).filter((d,i)=>i==0);
+      xAxis.tickValues( tickdates );
+    }
+    else if(filnum ==2){
+      let tickdates = forChart.map(d=>d.dateee).filter((d,i)=>{
+        return (
+          i == 0 ||
+          i == 1
+        )
+      })
+      xAxis.tickValues( tickdates );
+    }
+    else if(filnum==3){
+      let tickdates = forChart.map(d=>d.dateee).filter((d,i)=>{
+        return (
+          i == 0 ||
+          i == 2
+        )
+      })
+      xAxis.tickValues( tickdates );
+    }
+    else if(filnum==4){
+      let tickdates = forChart.map(d=>d.dateee).filter((d,i)=>{
+        return (
+          i == 0 ||
+          i == 1 ||
+          i == 3
+        )
+      })
+      xAxis.tickValues( tickdates );
+    }
+    else if(filnum==5){
+      let tickdates = forChart.map(d=>d.dateee).filter((d,i)=>{
+        return (
+          i == 0 ||
+          i == 1 ||
+          i == 3 ||
+          i == 4
+        )
+      })
+      xAxis.tickValues( tickdates );
+    }
+    else if(filnum==6){
+      let tickdates = forChart.map(d=>d.dateee).filter((d,i)=>{
+        return (
+          i == 0 ||
+          i == 1 ||
+          i == 3 ||
+          i == 4 ||
+          i == 5
+        )
+      })
+      xAxis.tickValues( tickdates );
+    }
+    else if(filnum==7){
+      let tickdates = forChart.map(d=>d.dateee).filter((d,i)=>{
+        return (
+          i == 0 ||
+          i == 1 ||
+          i == 3 ||
+          i == 4 ||
+          i == 5 ||
+          i == 6
+        )
+      })
+      xAxis.tickValues( tickdates );
+    }
+    else if(filnum==8){
+      let tickdates = forChart.map(d=>d.dateee).filter((d,i)=>{
+        return (
+          i == 0 ||
+          i == 2 ||
+          i == 5 ||
+          i == 6 ||
+          i == 7
+        )
+      })
+      xAxis.tickValues( tickdates );
+    }
+
+
+
+
+
     xAxisGroup.transition().call(xAxis);
+    // xAxisGroup.selectAll("text").attr("transform","rotate(60)");
+
+    // console.log(relevantPoints.length);
+
+
+
+
+
   }
 
 
@@ -99,33 +212,37 @@ function gotData(incomingData){
 
     // updatexAxis(filnum);
     // console.log("HEY");
+
     theline.datum(forChart.filter(function(d,i){return i<filnum;}))
 
     theline.attr("fill", "none")
         .attr("stroke", "#69b3a2")
         .attr("stroke-width", 1.5)
+        .transition()
         .attr("d", d3.line()
           .x(function(d) { return xScale(d.dateee); })
           .y(function(d) { return yScale(d.salesss); })
         )
       ;
 
+      // console.log(forChart.filter(function(d,i){return i < filnum;}));
+      // console.log( xScale(forChart.filter(function(d,i){return i < 2;})[1].dateee) );
 
       let theSituation = linegroup.selectAll(".dot").data(forChart.filter(function(d,i){return i < filnum;}))
       theSituation.enter()
           .append("circle")
             .attr("class", "dot")
-            .attr("cx", function(d) { return xScale(d.dateee) } )
+            .attr("cx", function(d) { return xScale(d.dateee)} )
             .attr("cy", function(d) { return 0 } )
-            .attr("r", 5)
+            .attr("r", 6.5)
             .attr("fill", "#69b3a2")
-            .on("mouseover",function(d){console.log(d.salesss);return d.salesss})
+            .on("mouseover",function(d){return d.salesss})
             .transition()
             .attr("cy", function(d) { return yScale(d.salesss) } )
         ;
         theSituation
           .transition()
-          .attr("cx", function(d) { return xScale(d.dateee) +xScale.bandwidth()/2 } )
+          .attr("cx", function(d) { return xScale(d.dateee) } )
           .attr("cy", function(d) { return yScale(d.salesss) } )
 
         theSituation.exit().transition()
