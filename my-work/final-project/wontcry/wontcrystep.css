@@ -1,27 +1,38 @@
 .main{
   display: flex;
+  flex-wrap: wrap;
+  font-family: 'Noto Sans KR', sans-serif;
 }
+
+text{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#title{
+  margin-left: 23%;
+  font-weight: bold;
+  font-size: 24px;
+}
+
 
 
 .step{
-  border: solid black 1px;
-  width:500px;
-  height:300px;
-  /* margin-left: 10%; */
-  width: 50%;
+  width: 60%;
+  margin-top: 5%;
 }
 
 #textboxes {
-  width: 50%;
+  width: 40%;
   /* border: red 1px solid; */
   height: 100vh;
   overflow: scroll;
 }
 
 .box{
-  margin-bottom: 60vh;
-  padding:30px;
-  border-top: 1px black solid;
+  margin-bottom: 71vh;
+  padding:20px;
+
+  /* border-top: 1px black solid; */
 }
 
 #right{
@@ -40,4 +51,8 @@
 #left:hover{
   transition: 1s;
   width:60px;
+}
+
+.button{
+  margin-left: 42%;
 }

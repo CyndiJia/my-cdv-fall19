@@ -1,51 +1,51 @@
 [
     {
-        "date": "2019-09-13T15:00:00.000Z",
+        "date": "2019-09-13T23:00:00.000Z",
         "salesamount": 0,
         "achievement": "none"
     },
     {
-        "date": "2019-09-13T16:19:00.000Z",
+        "date": "2019-09-14T00:19:00.000Z",
         "salesamount": 250000,
         "achievement": "Gold Album; \"nojay\" bought 1314 of them; \"All For Jay Jay Chou\" bought 10692, contributing 12.83%"
     },
     {
-        "date": "2019-09-13T17:16:00.000Z",
+        "date": "2019-09-14T01:16:00.000Z",
         "salesamount": 500000,
         "achievement": "Double Gold Album; \"All For Jay\" bought 1979; \"All For Jay Jay Chou\" bought 19319,contributing 11.59%"
     },
     {
-        "date": "2019-09-13T23:19:00.000Z",
+        "date": "2019-09-14T07:19:00.000Z",
         "salesamount": 750000,
         "achievement": "Triple Gold Album; \"All For Jay\" bought 1979; \"All For Jay Jay Chou\" bought 21628,contributing 8.65%"
     },
     {
-        "date": "2019-09-14T01:09:00.000Z",
+        "date": "2019-09-14T09:09:00.000Z",
         "salesamount": 1000000,
         "achievement": "Platinum Album;\"All For Jay\" bought 1979; \"All For Jay Jay Chou\" bought 23452,contributing 7.04%"
     },
     {
-        "date": "2019-09-14T10:35:00.000Z",
+        "date": "2019-09-14T18:35:00.000Z",
         "salesamount": 2000000,
         "achievement": "Double Platinum Album;\"All For Jay\" bought 2039; \"All For Jay Jay Chou\" bought 28275,contributing 4.24%"
     },
     {
-        "date": "2019-09-15T09:58:00.000Z",
+        "date": "2019-09-15T17:58:00.000Z",
         "salesamount": 3000000,
         "achievement": "Triple Platinum Album; \"All For Jay\" bought 3510; \"All For Jay Jay Chou\" bought 34067,contributing 3.41%"
     },
     {
-        "date": "2019-09-16T15:06:00.000Z",
+        "date": "2019-09-16T23:06:00.000Z",
         "salesamount": 5000000,
         "achievement": "Diamond Album; \"Ethan\" bought 4599; \"All For Jay Jay Chou\" bought 42316, contrubuting 2.54%"
     },
     {
-        "date": "2019-09-16T16:40:00.000Z",
+        "date": "2019-09-17T00:40:00.000Z",
         "salesamount": 10000000,
         "achievement": "Double Diamond Album; \"Liuruiqi\" bought 5000; \"All For Jay Jay Chou\" bought 46533, contrubuting 1.40%"
     },
     {
-        "date": "2019-09-17T02:01:00.000Z",
+        "date": "2019-09-17T10:01:00.000Z",
         "salesamount": 15000000,
         "achievement": "Supreme Diamond Album; \"CFC\" bought 6455; \"All For Jay Jay Chou\" bought 52088, contributing 1.04%"
     }

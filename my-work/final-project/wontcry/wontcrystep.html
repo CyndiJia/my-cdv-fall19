@@ -3,30 +3,72 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="wontcrystep.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
     <title></title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="module" src="leonScroller.js"></script>
+    <script src="https://d3js.org/d3-time.v1.min.js"></script>
+    <script src="https://d3js.org/d3-time-format.v2.min.js"></script>
+    <script type="module" src="wontcrystep.js"></script>
   </head>
   <body>
     <div class="main">
+      <p id="title">Progress of achievements of "The Story of us" on QQ Music</p>
       <div class="step">
-          Progress of achievements of "Won't Cry" on QQ Music - (Scrolling page with change of data)
       </div>
       <div id="textboxes">
-        <div class="box" id="zero">
-          <h3>I guess I'll start</h3>
+        <div class="box" id="0">
+          <h3>On <span style="color:#69b3a2">Sep 13th 23:00, 2019</span>, "Won't Cry" was officially released on QQ Music, which is one of Chinese mainstream music platforms for selling digital songs/albums.</h3>
         </div>
-        <div class="box" id="one">
-          <h3>1️⃣</h3>
+        <div class="box" id="1">
+          <h3>On <span style="color:#69b3a2">Sep 14th 00:19, 2019</span>, "Won't Cry" achieved a total sales of 250,000 rmb and was identified as the <span style="color:#b3697a">"Gold Album"</span> on QQ Music.
+          A fan named "nojay" bought 1314 of them, and "All For Jay Jay Chou bought 10692 of them, contributing 12.83%.</h3>
         </div>
-        <div class="box" id="two">
-          <h3>two</h3>
+        <div class="box" id="2">
+          <h3>On <span style="color:#69b3a2">Sep 14th 01:16, 2019</span>, "Won't Cry" achieved a total sales of 500,000 rmb and was identified as the <span style="color:#b3697a">"Double Gold Album"</span> on QQ Music.
+             A fan named "All For Jay" bought 1979 of them, and "All For Jay Jay Choud" bought 19319 of them, contributing 11.59%.</h3>
         </div>
-        <div class="box" id="fish">
-          <h1>🐠</h1>
+        <div class="box" id="3">
+          <h3>On <span style="color:#69b3a2">Sep 14th 07:19, 2019</span>, "Won't Cry" achieved a total sales of 750,000 rmb and was identified as the <span style="color:#b3697a">"Triple Gold Album"</span> on QQ Music.
+             A fan named "All For Jay" bought 1979 of them, and "All For Jay Jay Choud" bought 21628 of them, contributing 8.65%.</h3>
         </div>
-        <div class="button">
-          <a href="../index.html"><img src="../left.png" alt="" id = "left"/></a>
-          <a href="wontcryrate.html"><img src="../right.png" alt="" id = "right"/></a>
+        <div class="box" id="4">
+          <h3>On <span style="color:#69b3a2">Sep 14th 09:09, 2019</span>, "Won't Cry" achieved a total sales of 1000,000 rmb and was identified as the <span style="color:#b3697a">"Platinum Album"</span> on QQ Music.
+             A fan named "All For Jay" bought 1979 of them, and "All For Jay Jay Choud" bought 23452 of them, contributing 7.04%.</h3>
         </div>
+        <div class="box" id="5">
+          <h3><span style="color:#69b3a2">On Sep 14th 18:35, 2019</span> , "Won't Cry" achieved a total sales of 2000,000 rmb and was identified as the <span style="color:#b3697a">"Double Platinum Album"</span>  on QQ Music.
+             A fan named "All For Jay" bought 2039 of them, and "All For Jay Jay Choud" bought 28275 of them, contributing 4.24%.</h3>
+        </div>
+        <div class="box" id="6">
+          <h3><span style="color:#69b3a2">On Sep 15th 17:58, 2019</span> , "Won't Cry" achieved a total sales of 3000,000 rmb and was identified as the <span style="color:#b3697a">"Triple Platinum Album"</span>  on QQ Music.
+             A fan named "All For Jay" bought 3510 of them, and "All For Jay Jay Choud" bought 34067 of them, contributing 3.41%.</h3>
+        </div>
+        <div class="box" id="7">
+          <h3><span style="color:#69b3a2">On Sep 16th 23:06, 2019</span> , "Won't Cry" achieved a total sales of 5000,000 rmb and was identified as the <span style="color:#b3697a">"Diamond Album"</span>  on QQ Music.
+             A fan named "Ethan" bought 4599 of them, and "All For Jay Jay Choud" bought 42316 of them, contributing 2.54%.</h3>
+        </div>
+        <div class="box" id="8">
+          <h3><span style="color:#69b3a2">On Sep 17th 00:40, 2019</span> , "Won't Cry" achieved a total sales of 5000,000 rmb and was identified as the <span style="color:#b3697a">"Diamond Album"</span>  on QQ Music.
+             A fan named "Liuruiqi" bought 5000 of them, and "All For Jay Jay Choud" bought 46533 of them, contributing 1.40%.</h3>
+        </div>
+        <div class="box" id="9">
+          <h3><span style="color:#69b3a2">On Sep 17th 10:01, 2019</span> , "Won't Cry" achieved a total sales of 5000,000 rmb and was identified as the <span style="color:#b3697a">"Diamond Album"</span>  on QQ Music.
+             A fan named "CFC" bought 6455 of them, and "All For Jay Jay Choud" bought 52088 of them, contributing 1.04%.</h3>
+        </div>
+        <div class="box" id="10">
+          <h3><span style="color:#69b3a2">On Sep 16th 23:06, 2019</span> , "Won't Cry" achieved a total sales of 5000,000 rmb and was identified as the <span style="color:#b3697a">"Diamond Album"</span>  on QQ Music.
+             </h3>
+        </div>
+        <div class="box" id="11">
+          <h3>The End.</h3>
+        </div>
+
+      </div>
+      <div class="button">
+        <a href="../index.html"><img src="../left.png" alt="" id = "left"/></a>
+        <a href="wontcryrate.html"><img src="../right.png" alt="" id = "right"/></a>
       </div>
     </div>
 
