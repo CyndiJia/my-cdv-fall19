@@ -39,3 +39,4 @@ content</span> in the comments to show users' views toward the four songs.
 <img src="rate.gif" />
 
 ### Number of Comments on Douban & Wordcloud formed by the content of comments
+<img src="comment.gif" />
