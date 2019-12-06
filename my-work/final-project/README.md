@@ -33,7 +33,9 @@ content</span> in the comments to show users' views toward the four songs.
 <!-- </p> -->
 
 ### Progress of Achievements on QQ Music
+<img src="progress.gif" />
 
 ### Rating Distribution on Douban
+<img src="rate.gif" />
 
 ### Number of Comments on Douban & Wordcloud formed by the content of comments
