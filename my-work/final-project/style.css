@@ -1,0 +1,42 @@
+.whole{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Noto Sans KR', sans-serif;
+  width: 70%;
+  margin: auto;
+  font-size: 17px;
+}
+
+p{
+  color:#484539;
+}
+
+#inin{
+  font-size: 40px;
+}
+
+#right{
+  margin-top: 2%;
+  width: 50px;
+  margin-left: 46.5%;
+}
+
+.intro{
+  text-align: center;
+}
+
+#right:hover{
+  transition: 1s;
+  width:60px;
+
+}
+
+#d{
+  margin-left:30.5%;
+}
+
+img{
+  width:300px;
+  margin-left: 30%;
+}

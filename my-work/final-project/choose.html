@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="entry.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    </script>
+
+    <title></title>
+  </head>
+  <body>
+    <audio id="dawnsong">
+      <source src="dawn.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="rivalsong">
+      <source src="rival.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="storysong">
+      <source src="story.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="crysong">
+      <source src="wontcry.mp3" type="audio/mpeg">
+    </audio>
+    <div class="main">
+
+        <div id="storyyy">
+          <a href="story/storystep.html">
+          <img src="story.jpeg" id = "sss" alt="story" width="200px"></img>
+          </a>
+          <p id="nameee">The Story of Us</p>
+          <button onclick="storyplay()" type="button">Play</button>
+          <button onclick="storypause()" type="button">Pause</button>
+        </div>
+
+
+        <div id="wontcryyy">
+          <a href="wontcry/wontcrystep.html">
+            <img src="wontcry.jpeg" id="www" alt="wontcry" width="200px"></img>
+          </a>
+          <p id="nameee">Won't Cry</p>
+          <button onclick="cryplay()" type="button">Play</button>
+          <button onclick="crypause()" type="button">Pause</button>
+        </div>
+
+
+        <div id="dawnnn">
+          <a href="dawn/dawnstep.html">
+            <img src="dawn.jpeg" id="ddd" alt="dawn" width="200px"></img>
+          </a>
+          <p id="nameee">Dawn</p>
+          <button onclick="dawnplay()" type="button">Play</button>
+          <button onclick="dawnpause()" type="button">Pause</button>
+        </div>
+
+
+        <div id="rivalll">
+          <a href="rival/rivalstep.html">
+            <img src="rival.jpeg" id="rrr" alt="rival" width="200px"></img>
+          </a>
+          <p id="nameee">The Rivals</p>
+          <button onclick="rivalplay()" type="button">Play</button>
+          <button onclick="rivalpause()" type="button">Pause</button>
+        </div>
+    <div id="dddddd">
+      <div id="description">
+          <p id="des">Hover the song cover images for an introduction : )</p>
+      </div>
+      <div id="platforms">
+          <p id="plat">introduction of that song when hovering</p>
+      </div>
+
+    </div>
+      <button type="button" name="button" id = 'back' onclick = "Back()">Intro</button>
+    </div>
+    <!-- <script src=js/jquery.min.js></script> -->
+    <script>
+      function Back(){
+        location.href="index.html";
+      }
+
+    let storysong = document.getElementById("storysong");
+    let wontcrysong = document.getElementById("crysong");
+    let dawnsong = document.getElementById("dawnsong");
+    let rivalsong = document.getElementById("rivalsong");
+
+    function storyplay() {
+      storysong.play();
+      crysong.pause();
+      dawnsong.pause();
+      rivalsong.pause();
+    }
+
+    function dawnplay() {
+      dawnsong.play();
+      storysong.pause();
+      crysong.pause();
+      rivalsong.pause();
+    }
+
+    function cryplay() {
+      wontcrysong.play();
+      storysong.pause();
+      dawnsong.pause();
+      rivalsong.pause();
+    }
+
+    function rivalplay() {
+      rivalsong.play();
+      crysong.pause();
+      dawnsong.pause();
+      storysong.pause();
+    }
+
+    function storypause() {
+      storysong.pause();
+    }
+
+    function crypause() {
+      crysong.pause();
+    }
+
+    function dawnpause() {
+      dawnsong.pause();
+    }
+
+    function rivalpause() {
+      rivalsong.pause();
+    }
+
+
+
+
+    function story(){
+      document.getElementById('des').innerHTML = "Name: The Story of Us <br> Singer: JJ Lin <br>Composer: JJ lin <br>Lyricist: Wenshan Fang <br> Release time : 2019.9.16 0:00"
+    }
+
+    function wontcry(){
+      document.getElementById('des').innerHTML = "Name: Won't Cry <br> Singer: Jay Chou <br>Composer: Jay Chou <br>Lyricist: Wenshan Fang <br>Presale started time: 2019.9.14 0:00 <br> Release time : 2019.9.16 23:00"
+    }
+
+    function dawn(){
+      document.getElementById('des').innerHTML = "Name: Dawn <br> Singer: Kris Wu <br>Composer: Kris Wu <br>Lyricist: Kris Wu <br> Release time : 2019.8.7 10:00"
+    }
+
+    function rival(){
+      document.getElementById('des').innerHTML = "Name: The Rivals <br> Singer: Evan Lin <br>Composer: KZ/Kim/Tae Yeong <br>Lyricist: KZ/Kim/Tae Yeong <br> Release time : 2019.8.24 0:00"
+    }
+
+    document.getElementById('sss').onmouseover = function(){story();};
+    document.getElementById('www').onmouseover = function(){wontcry();};
+    document.getElementById('ddd').onmouseover = function(){dawn();};
+    document.getElementById('rrr').onmouseover = function(){rival();};
+    </script>
+  </body>
+</html>

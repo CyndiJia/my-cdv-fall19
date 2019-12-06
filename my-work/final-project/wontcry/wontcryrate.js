@@ -79,27 +79,30 @@ function gotData(incomingData){
 
   distri.selectAll("rect").data(forChart).enter()
                                             .append("rect")
-                                                .attr("width",function(d){return xScale(d.num)})
-                                                .attr("x",xScale(0))
+                                                .attr("width","0")
+                                                .attr("height", yScale.bandwidth())
                                                 .attr("y", function(d,i){
                                                   return yScale(d.rating);
                                                 })
-                                                .attr("height", yScale.bandwidth())
-                                                .attr("fill",function(d,i){return colors(d.num);})
-                                                .style("opacity",.6)
-                                              .on("mouseover",function(d){
-                                                console.log('hi', d);
-                                                div.select("circle").transition().delay(100).attr("cx", function(){
-                                                  return d.rating*20
-                                                }).attr("cy", function(){
-                                                  return d.rating*20
+                                                .on("mouseover",function(d){
+                                                  console.log('hi', d);
+                                                  div.select("circle").transition().delay(100).attr("cx", function(){
+                                                    return d.rating*20
+                                                  }).attr("cy", function(){
+                                                    return d.rating*20
+                                                  })
+                                                  div.transition().duration(1000).style("opacity",0.65);
+                                                  labels.text("Number: "+d.num+"\n"+"Ratio: "+d3.format(".2f")(d.num/total)*100+"%").attr("x","100").attr("y","50").attr("color",'white');
+                                                  div.style("left",(xScale(d.num)+350)/2+"px").style("top",(yScale(d.rating)+yScale.bandwidth())+"px");
                                                 })
-                                                div.transition().duration(1000).style("opacity",0.65);
-                                                labels.text("Number: "+d.num+"\n"+"Ratio: "+d3.format(".2f")(d.num/total)*100+"%").attr("x","100").attr("y","50").attr("color",'white');
-                                                div.style("left",(xScale(d.num)+350)/2+"px").style("top",(yScale(d.rating)+yScale.bandwidth())+"px");
-                                              })
-  ;
+                                                .attr("fill",function(d){return colors(d.num);})
+                                                .style("opacity",.6)
+                                                .transition()
+                                                .duration(1500)
+                                                .attr("width",function(d){return xScale(d.num)})
+                                                .attr("x",xScale(0))
 
+  ;
 
 
 
