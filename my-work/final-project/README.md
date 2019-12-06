@@ -4,7 +4,9 @@
 
 This project explores the stories of four popular Chinese songs after they were released, which are <span style="font-weight:bold">"The Story of Us" by JJ Lin</span>, <span style="font-weight:bold">"Won't Cry" by Jay Chou</span>,<span style="font-weight:bold">"Dawn" by Kris Wu</span>, and <span style="font-weight:bold" >"The Rivals" by Evan Lin</span>.I collected the data and studied the performance of these four songs on two Chinese mainstream music/online discussion platforms, <span style="color: #69b3a2">"QQ Music"</span> and <span style="color:#b3697a">"Douban"</span>.</p>
 
-![QQ Music](qq.jpg)
+<p align="center">
+  <img width="460" src="qq.jpg">
+</p>
 
 <span style="color: #69b3a2">QQ Music</span> is one of the biggest online music platforms in China.
 With the prevalence of digital music and rising awareness of music copyright, many songs in
@@ -14,7 +16,9 @@ according to the <span style="color: #69b3a2">salesamount</span>.
 In this project, I collected the <span style="color: #69b3a2">progress achievements</span> of the four songs and analyzed the data
 according to the timelines.</p>
 
-![QQ Music](douban.png)
+<p align="center">
+  <img width="460" src="douban.png">
+</p>
 
 <span style="color:#b3697a">Douban</span> is one of the biggest online communities in China. People like to share their views
 toward music, films, social phenomenons...etc. Douban Music is particularly for <span style="color:#b3697a">online discussions</span> of different
