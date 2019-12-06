@@ -29,7 +29,7 @@ content</span> in the comments to show users' views toward the four songs.
 
 ## Home Page
 <!-- <p align="center"> -->
-  <img src="home.png" />
+  <img src="home.gif" />
 <!-- </p> -->
 
 ## Progress of Achievements on QQ Music
