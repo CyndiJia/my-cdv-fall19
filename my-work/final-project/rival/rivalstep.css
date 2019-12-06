@@ -54,5 +54,25 @@ text{
 }
 
 .button{
-  margin-left: 42%;
+  margin-left: 41%;
+}
+
+#back{
+  position: relative;
+  background-color: #edede9;
+  /* opacity: 0.6; */
+  color: black;
+  width:100px;
+  height:30px;
+  bottom:21px;
+  border:none;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+#back:hover{
+  cursor: pointer;
+  background-color: #fbf1ec;
 }

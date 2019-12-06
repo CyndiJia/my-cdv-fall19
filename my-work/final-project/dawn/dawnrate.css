@@ -11,12 +11,12 @@
 }
 
 .button{
-  margin-left: 43%;
+  margin-left: 41%;
   margin-top: 1%;
 }
 
 #title{
-  margin-left: 29%;
+  margin-left: 32%;
   font-weight: bold;
   font-size: 24px;
 }
@@ -56,4 +56,24 @@ div.tooltip {
 
 text{
   margin-top: 20px;
+}
+
+#back{
+  position: relative;
+  background-color: #edede9;
+  /* opacity: 0.6; */
+  color: black;
+  width:100px;
+  height:30px;
+  bottom:21px;
+  border:none;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+#back:hover{
+  cursor: pointer;
+  background-color: #fbf1ec;
 }
