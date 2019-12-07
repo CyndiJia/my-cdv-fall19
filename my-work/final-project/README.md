@@ -28,9 +28,12 @@ In this project, i collected the <span style="color:#b3697a">rating distribution
 content</span> in the comments to show users' views toward the four songs.
 
 ## Home Page
-<!-- <p align="center"> -->
+
   <img src="home.gif" />
-<!-- </p> -->
+
+The home page is a collection of the introduction of all four songs. When the user hovers on the images, introduction of that song shows up. The div box at the bottom left is a brief introduction of the song, and the one at the bottom left is an introduction of the singer's background & awards. The user can also listen to the songs by clicking the play/pause button.
+
+Clicking on the images will redirect to the progress achievement page of each song, which is the start of that song's data story. The user can also click the "intro" button to get back to the introduction page.
 
 ## Progress of Achievements on QQ Music
 <img src="progress.gif" />
