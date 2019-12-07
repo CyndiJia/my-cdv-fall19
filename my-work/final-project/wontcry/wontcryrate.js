@@ -95,6 +95,9 @@ function gotData(incomingData){
                                                   labels.text("Number: "+d.num+"\n"+"Ratio: "+d3.format(".2f")(d.num/total)*100+"%").attr("x","100").attr("y","50").attr("color",'white');
                                                   div.style("left",(xScale(d.num)+350)/2+"px").style("top",(yScale(d.rating)+yScale.bandwidth())+"px");
                                                 })
+                                                .on("mouseout",function(){
+                                                  div.transition().duration(600).style("opacity",0)
+                                                })
                                                 .attr("fill",function(d){return colors(d.num);})
                                                 .style("opacity",.6)
                                                 .transition()
